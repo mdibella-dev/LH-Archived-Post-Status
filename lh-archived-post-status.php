@@ -161,7 +161,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         static function return_doing_their_own_thing_post_types() {
 
-            $doing_their_own_thing_post_types = array('advanced_ads', 'wc_membership_plan');
+            $doing_their_own_thing_post_types = ['advanced_ads', 'wc_membership_plan'];
 
             return apply_filters( 'lh_archive_post_status_return_doing_their_own_thing_post_types', $doing_their_own_thing_post_types );
 
@@ -170,12 +170,19 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         static function get_applicable_post_types() {
 
-            $post_types = get_post_types( array('public' => true ), 'names' );
+            $post_types = get_post_types( [
+                'public' => true
+            ], 'names' );
 
-            $excludable_post_types = array_unique( array_merge( array('attachment','forum','topic','reply','lh_rpt-post_type'), self::return_doing_their_own_thing_post_types() ) );
+            $excludable_post_types = array_unique( array_merge( [
+                'attachment',
+                'forum',
+                'topic',
+                'reply',
+                'lh_rpt-post_type'
+            ], self::return_doing_their_own_thing_post_types() ) );
 
             $post_types = array_diff( $post_types, $excludable_post_types );
-
             $post_types = apply_filters( 'lh_archive_post_status_posttypes_filter', $post_types );
             $post_types = apply_filters( 'lh_archive_post_status_get_applicable_post_types_filter', $post_types );
 
@@ -217,22 +224,26 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             $timestamp = date( "Y-m-d H:i:s", strtotime( 'today midnight' ) );
 
-            $types = get_post_types( array('public' => true ), 'names' );
+            $types = get_post_types( [
+                'public' => true
+            ], 'names' );
 
-            $args = array (
-                'post_type' => $types,
-                'post_status' => array('publish'),
-                'posts_per_page' => '5',
+            $args = [
+                'post_type'           => $types,
+                'post_status'         => [
+                    'publish'
+                ],
+                'posts_per_page'      => '5',
                 'ignore_sticky_posts' => 1,
-                'meta_query'    => array(
-                    'relation'  => 'AND',
-                    array(
-                        'key'       => '_lh_archive_post_status-post_expires',
-                        'value'     => $timestamp,
-                        'compare'   => '<',
-                    )
-                )
-            );
+                'meta_query'          => [
+                    'relation' => 'AND',
+                    [
+                        'key'     => '_lh_archive_post_status-post_expires',
+                        'value'   => $timestamp,
+                        'compare' => '<',
+                    ]
+                ]
+            ];
 
             // The Query
             $query = new WP_Query( $args );
@@ -241,10 +252,10 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             foreach( $posts as $post ) {
 
-                $my_post = array(
+                $my_post = [
                     'ID'          => $post->ID,
                     'post_status' => self::return_new_status_name(),
-                );
+                ];
 
                 wp_update_post( $my_post );
 
@@ -258,10 +269,10 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
             //check to see if is currently archived but expiration is in the future, if so publish it
             if( ( strtotime( $expiration ) > strtotime( 'today midnight' ) ) and ( $post_object->post_status == self::return_new_status_name() ) ) {
 
-                $my_post = array(
+                $my_post = [
                     'ID'          => $post_object->ID,
                     'post_status' => 'publish'
-                );
+                ];
 
                 // Update the post into the database
                 wp_update_post( $my_post );
@@ -270,10 +281,10 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
             //check to see if is currently published but expiration is in the past, if so archive it
             } elseif ( ( strtotime( $expiration ) < strtotime( 'today midnight' ) ) and ( $post_object->post_status == 'publish' ) ) {
 
-                $my_post = array(
+                $my_post = [
                     'ID'          => $post_object->ID,
                     'post_status' => self::return_new_status_name(),
-                );
+                ];
 
                 // Update the post into the database
                 wp_update_post( $my_post );
@@ -365,7 +376,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             if ( self::is_applicable_post_type( $post_type ) ) {
 
-                add_meta_box( self::return_plugin_namespace() . "-archive_date-div", __( 'Archive Date', self::return_plugin_namespace() ), array( $this, "render_archive_date_box_content" ), $post_type, "side", "high", array() );
+                add_meta_box( self::return_plugin_namespace() . "-archive_date-div", __( 'Archive Date', self::return_plugin_namespace() ), [$this, "render_archive_date_box_content"], $post_type, "side", "high", [] );
 
             }
 
@@ -480,10 +491,10 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             }
 
-            $settings = array(
+            $settings = [
                 'media_buttons' => false,
                 'textarea_name' => self::return_opt_name() . '[' . $args[0] . ']',
-            );
+            ];
 
             wp_editor( $value, self::return_message_field_name(), $settings);
 
@@ -509,44 +520,59 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
             add_settings_field( // Option 1
                 self::return_publicly_available(), // Option ID
                 __( 'Can Archived Posts be read publicly:', self::return_plugin_namespace() ), // Label
-                array( $this, 'render_publicly_dropdown' ), // !important - This is where the args go!
+                [
+                    $this,
+                    'render_publicly_dropdown'
+                ], // !important - This is where the args go!
                 'reading', // Page it will be displayed (General Settings)
                 self::return_opt_name(), // Name of our section
-                array( // The $args
+                [ // The $args
                     self::return_publicly_available() // Should match Option ID
-                )
+                ]
             );
 
             add_settings_field( // Option 2
                 self::return_title_label_field_name(), // Option ID
                 __( 'Title Label:', self::return_plugin_namespace() ), // Label
-                array( $this, 'render_title_label_input' ), // !important - This is where the args go!
+                [
+                    $this,
+                    'render_title_label_input'
+                ], // !important - This is where the args go!
                 'reading', // Page it will be displayed (General Settings)
                 self::return_opt_name(), // Name of our section
-                array( // The $args
+                [ // The $args
                     self::return_title_label_field_name() // Should match Option ID
-                )
+                ]
             );
 
             add_settings_field( // Option 3
                 self::return_message_field_name(), // Option ID
                 __( 'Archive Message:', self::return_plugin_namespace() ), // Label
-                array( $this, 'render_message_editor' ), // !important - This is where the args go!
+                [
+                    $this,
+                    'render_message_editor'
+                ], // !important - This is where the args go!
                 'reading', // Page it will be displayed (General Settings)
                 self::return_opt_name(), // Name of our section
-                array( // The $args
+                [ // The $args
                     self::return_message_field_name() // Should match Option ID
-                )
+                ]
             );
 
             add_settings_section(
                 self::return_opt_name(), // Section ID
                 __( 'Archiving Settings', self::return_plugin_namespace() ), // Section Title
-                array( $this, 'reading_setting_callback' ), // Callback
+                [
+                    $this,
+                    'reading_setting_callback'
+                ], // Callback
                 'reading' // What Page?  This makes the section show up on the General Settings Page
             );
 
-            register_setting('reading',self::return_opt_name(), array($this, 'validate_options'));
+            register_setting('reading',self::return_opt_name(), [
+                $this,
+                'validate_options'
+            ] );
 
         }
 
@@ -591,7 +617,10 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
                 $options = get_option( self::return_opt_name() );
 
-                remove_filter( 'the_content', array( $this, 'add_message_to_content' ) );
+                remove_filter( 'the_content', [
+                    $this,
+                    'add_message_to_content'
+                ] );
 
                 if ( ! empty( get_post_status() ) && ( get_post_status() == self::return_new_status_name() ) && ! empty( $options[self::return_message_field_name()] ) ) {
 
@@ -617,7 +646,10 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         public function after_body_open(){
 
-            add_filter( 'the_content', array($this,'add_message_to_content') );
+            add_filter( 'the_content', [
+                $this,
+                'add_message_to_content'
+            ] );
 
         }
 
@@ -725,11 +757,16 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
                 if ( current_user_can( 'read_private_posts' ) ) {
 
-                    $post_status = array( 'publish', 'private' );
+                    $post_status = [
+                        'publish',
+                        'private'
+                    ];
 
                 } else {
 
-                    $post_status = array( 'publish' );
+                    $post_status = [
+                        'publish'
+                    ];
 
                 }
 
@@ -825,7 +862,9 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
                 if ( is_string( $args['post_status'] ) ) {
 
-                    $args['post_status'] = array($args['post_status']);
+                    $args['post_status'] = [
+                        $args['post_status']
+                    ];
 
                 }
 
@@ -900,7 +939,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             }
 
-            $args = array(
+            $args = [
                 'label'                     => _x( ucwords( self::return_new_status_label() ), 'post status label', self::return_plugin_namespace() ),
                 'public'                    => $public,
                 'label_count'               => _n_noop( self::return_new_status_count(), self::return_new_status_count(), self::return_plugin_namespace() ),
@@ -911,7 +950,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
                 'show_in_inline_dropdown'   => true,
                 'publicly_queryable'        => true,
                 'dashicon'                  => 'dashicons-archive',
-                'labels'                      => array(
+                'labels'                    => [
                     'metabox_dropdown'    => __( 'Archived', self::return_plugin_namespace() ),
                     'metabox_submit'      => __( 'Archive', self::return_plugin_namespace() ),
                     'metabox_save_on'     => __( 'Archive on:', self::return_plugin_namespace() ),
@@ -923,16 +962,22 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
                     'metabox_save_now'    => __( 'Archive <b>now</b>', self::return_plugin_namespace() ),
                     'inline_dropdown'     => __( 'Archived', self::return_plugin_namespace() ),
                     'press_this_dropdown' => __( 'Add to archives', self::return_plugin_namespace() ),
-                ),
-            );
+                ],
+            ];
 
             register_post_status( self::return_new_status_name(), $args );
 
 
             foreach ( self::get_applicable_post_types() as $posttype ) {
 
-                add_filter( 'manage_' . $posttype . '_posts_columns', array($this, 'admin_edit_columns'), 5, 1 );
-                add_action( 'manage_' . $posttype . '_posts_custom_column', array($this, 'admin_edit_column_values'), 100000, 2 );
+                add_filter( 'manage_' . $posttype . '_posts_columns', [
+                    $this,
+                    'admin_edit_columns'
+                ], 5, 1 );
+                add_action( 'manage_' . $posttype . '_posts_custom_column', [
+                    $this,
+                    'admin_edit_column_values'
+                ], 100000, 2 );
 
             }
 
@@ -1039,45 +1084,97 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
             load_plugin_textdomain( 'wp-statuses', false, basename( dirname( __FILE__ ) ) . '/includes/wp-statuses/languages' );
 
             //Handle access and display of the archived post status
-            add_action( 'pre_get_posts', array($this,'exclude_archive_post_status_from_main_query') );
-            add_action( 'pre_get_posts', array($this,'exclude_archive_post_status_from_feed') );
+            add_action( 'pre_get_posts', [
+                $this,
+                'exclude_archive_post_status_from_main_query'
+            ] );
+
+            add_action( 'pre_get_posts', [
+                $this,
+                'exclude_archive_post_status_from_feed'
+            ] );
 
             //add a section to the reading settings
-            add_action( 'admin_init', array($this,'add_configuration_section') );
+            add_action( 'admin_init', [
+                $this,
+                'add_configuration_section'
+            ] );
 
             //add an expiry to newly archived post objects that don't have one already, remove it if it has been republished
-            add_action( 'transition_post_status', array($this, 'maybe_add_or_remove_expiry'), 10, 3);
+            add_action( 'transition_post_status', [
+                $this,
+                'maybe_add_or_remove_expiry'
+            ], 10, 3);
 
             //add the expiry metabox
-            add_action( 'add_meta_boxes', array($this,'add_meta_boxes'),10, 2 );
+            add_action( 'add_meta_boxes', [
+                $this,
+                'add_meta_boxes'
+            ], 10, 2 );
 
             //handle posted values from the metabox
-            add_action( 'save_post', array($this,'update_post_details'),10, 3 );
+            add_action( 'save_post', [
+                $this,
+                'update_post_details'
+            ], 10, 3 );
 
             //add messages and labels to titles and post content
-            add_filter( 'the_title', array( $this, 'modify_title' ), 10, 2 );
-            add_action( 'wp_body_open', array($this,'after_body_open'));
+            add_filter( 'the_title', [
+                $this,
+                'modify_title'
+            ], 10, 2 );
+
+            add_action( 'wp_body_open', [
+                $this,
+                'after_body_open'
+            ] );
 
             //add a column for the archive date
-            add_filter( 'page_row_actions', array($this,'add_posts_rows'), 10, 2 );
-            add_filter( 'post_row_actions', array($this,'add_posts_rows'), 10, 2 );
+            add_filter( 'page_row_actions', [
+                $this,
+                'add_posts_rows'
+            ], 10, 2 );
+
+            add_filter( 'post_row_actions', [
+                $this,
+                'add_posts_rows'
+            ], 10, 2 );
 
             //create a admin ajax endpoint for archiving posts
-            add_action( 'wp_ajax_' . self::return_plugin_namespace() . '-do_archive', array($this, 'ajax_do_archive') );
+            add_action( 'wp_ajax_' . self::return_plugin_namespace() . '-do_archive', [
+                $this,
+                'ajax_do_archive'
+            ] );
 
             //Add a label to the listing table
-            add_filter( 'display_post_states', array($this,'display_archive_state'), 10, 2 );
+            add_filter( 'display_post_states', [
+                $this,
+                'display_archive_state'
+            ], 10, 2 );
 
             //Maybe add the post_status to the sitemap
-            add_filter( 'wp_sitemaps_posts_query_args', array($this,'maybe_add_status_to_sitemap'), 10, 2 );
+            add_filter( 'wp_sitemaps_posts_query_args', [
+                $this,
+                'maybe_add_status_to_sitemap'
+            ], 10, 2 );
 
             //add tasks to the cron job
-            add_action( 'lh_archived_post_status_run', array($this,'run_processes') );
-            add_action( 'lh_archived_post_status_initial', array($this,'initial_processes') );
+            add_action( 'lh_archived_post_status_run', [
+                $this,
+                'run_processes'
+            ] );
+
+            add_action( 'lh_archived_post_status_initial', [
+                $this,
+                'initial_processes'
+            ] );
 
 
             //exclude certain post types, some of them do their own thing with metaboxes
-            add_filter( 'wp_statuses_get_supported_post_types', array($this,'exclude_certain_post_types'), 10, 1 );
+            add_filter( 'wp_statuses_get_supported_post_types', [
+                $this,
+                'exclude_certain_post_types'
+            ], 10, 1 );
 
             /**
             * The following hooks are just to ensure the plugin plays nice with some other plugins in the LocalHero project.
@@ -1086,16 +1183,28 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
             */
 
             //add archive post status to the wp super cache helper
-            add_filter( 'lh_super_cache_helper_statuses', array($this, 'lh_super_cache_helper_statuses'), 10, 1 );
+            add_filter( 'lh_super_cache_helper_statuses', [
+                $this,
+                'lh_super_cache_helper_statuses'
+            ], 10, 1 );
 
             //filter out the archive to draft if copying post
-            add_filter( 'lh_copy_to_draft_meta_defaults_filter', array($this,'remove_meta_archive_date'), 10, 2 );
+            add_filter( 'lh_copy_to_draft_meta_defaults_filter', [
+                $this,
+                'remove_meta_archive_date'
+            ], 10, 2 );
 
             //maybe make archived posts, pages, cpts etc, waybackable
-            add_filter( 'lh_wayback_machine_get_applicable_post_statuses', array($this,'maybe_make_waybackable'), 10, 1 );
+            add_filter( 'lh_wayback_machine_get_applicable_post_statuses', [
+                $this,
+                'maybe_make_waybackable'
+            ], 10, 1 );
 
             //maybe check for broken links for archived posts, pages, cpts etc
-            add_filter( 'lh_blc_get_applicable_post_statuses', array($this,'maybe_make_checkable'), 10, 1 );
+            add_filter( 'lh_blc_get_applicable_post_statuses', [
+                $this,
+                'maybe_make_checkable'
+            ], 10, 1 );
 
             //define some global functions
             $this->define_global_functions();
@@ -1107,7 +1216,10 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
             */
 
             //prune the cahce when a post is transitionsed from published to archived
-            add_action( 'transition_post_status', array($this,'prune_on_transition'), 10, 3 );
+            add_action( 'transition_post_status', [
+                $this,
+                'prune_on_transition'
+            ], 10, 3 );
 
         }
 
@@ -1131,7 +1243,10 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             if ( is_multisite() && $network_wide ) {
 
-                $args = array('number' => 500, 'fields' => 'ids');
+                $args = [
+                    'number' => 500,
+                    'fields' => 'ids'
+                ];
 
                 $sites = get_sites( $args );
 
@@ -1156,7 +1271,11 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             if ( is_multisite() && $network_wide ) {
 
-                $args = array('number' => 500, 'fields' => 'ids');
+                $args = [
+                    'number' => 500,
+                    'fields' => 'ids'
+                ];
+
                 $sites = get_sites( $args );
 
                 foreach ( $sites as $blog_id ) {
@@ -1179,10 +1298,16 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
         public function __construct() {
 
             //create the archived custom post status
-            add_action( 'init', array($this,'create_custom_post_status'), 1000 );
+            add_action( 'init', [
+                $this,
+                'create_custom_post_status'
+            ], 1000 );
 
             //try to run everything on plugins loaded
-            add_action( 'plugins_loaded', array($this,'plugin_init'), 1000, 1 );
+            add_action( 'plugins_loaded', [
+                $this,
+                'plugin_init'
+            ], 1000, 1 );
 
         }
 
@@ -1191,10 +1316,15 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
     $lh_archived_post_status_instance = LH_archived_post_status_plugin::get_instance();
 
-    register_activation_hook( __FILE__, array('LH_archived_post_status_plugin','on_activate'), 10, 1 );
-    register_deactivation_hook( __FILE__, array('LH_archived_post_status_plugin','on_deactivate') );
+    register_activation_hook( __FILE__, [
+        'LH_archived_post_status_plugin',
+        'on_activate'
+    ], 10, 1 );
 
-
+    register_deactivation_hook( __FILE__, [
+        'LH_archived_post_status_plugin',
+        'on_deactivate'
+    ] );
 
 }
 

@@ -22,7 +22,7 @@
 <th scope="row"><label for="<?php echo self::return_message_field_name(); ?>"><?php _e("Archive Message:", self::return_plugin_namespace()); ?></label></th>
 <td>
 <?php
-$settings = array( 'media_buttons' => false );
+$settings = ['media_buttons' => false];
 wp_editor( $options[self::return_message_field_name()], self::return_message_field_name(), $settings );
 ?>
 </td>
@@ -36,12 +36,12 @@ $roles = bp_blogs_get_allowed_roles();
 
 print_r( $roles );
 
-    $suggestions = bp_core_get_suggestions( array(
+    $suggestions = bp_core_get_suggestions( [
         'group_id' => -145,  // A negative value will exclude this group's members from the suggestions.
         'limit'    => 10,
         'term'     => 'Keiran',
         'type'     => 'members',
-    ) );
+    ] );
 
     print_r( $suggestions );
 
