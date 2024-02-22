@@ -1,4 +1,4 @@
-=== LH Archived Post Status ===
+# LH Archived Post Status
 
 Contributors:      shawfactor
 Donate link:        https://lhero.org/portfolio/lh-archived-post-status/
@@ -11,7 +11,8 @@ License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
 Allows posts and pages to be archived so you can remove content from the main loop and feed without having to trash it.
 
-== Description ==
+
+## Description
 
 This plugin allows you to archive your WordPress content similar to the way you archive your e-mail. Unlike other archiving solutions though this actually does it all and does it properly
 
@@ -30,7 +31,7 @@ This plugin is ideal for sites where certain kinds of content is not meant to be
 **Love this plugin or want to help the LocalHero Project? Please consider [making a donation](https://lhero.org/portfolio/lh-archived-post-status/).**
 
 
-== Frequently Asked Questions ==
+## Frequently Asked Questions
 
 = Isn't this the same as using the Draft or Private statuses? =
 
@@ -88,15 +89,15 @@ The issue is likely is likely with the other plugin, all my lugins follw standar
 
 Yes the plugin defines the function archive_post_link which acts almost identically to the wordpress native function edit_post_link. That is clicking it will archive the relevant post is the current user has the edit_post capability. You can add it to you theme. 
 
-== Installation ==
+
+## Installation
 
 1. Upload the entire `lh-archived-post-status` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Navigate to Settings->Reading and set the visibility and archiving message
 
 
-
-== Changelog ==
+## Changelog
 
 **0.01 February 12, 2015**  
 * Initial release
