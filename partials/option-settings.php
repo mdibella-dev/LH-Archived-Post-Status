@@ -5,8 +5,8 @@
 <tr valign="top">
 <th scope="row"><label for="<?php echo self::return_publicly_available(); ?>"><?php _e( "Can Archived Posts be read publicly:", self::return_plugin_namespace() ); ?></label></th>
 <td><select name="<?php echo self::return_publicly_available(); ?>" id="<?php echo self::return_publicly_available(); ?>">
-<option value="1" <?php  if ( $options[self::return_publicly_available()] == 1 ){ echo 'selected="selected"'; }  ?>>Yes - But not in the, main loop, frontpage, or feed</option>
-<option value="0" <?php  if ( $options[self::return_publicly_available()] == 0 ){ echo 'selected="selected"';}  ?>>No - only logged in users can view archived posts</option>
+<option value="1" <?php  if ( 1 == $options[self::return_publicly_available()] ){ echo 'selected="selected"'; }  ?>>Yes - But not in the, main loop, frontpage, or feed</option>
+<option value="0" <?php  if ( 0 == $options[self::return_publicly_available()] ){ echo 'selected="selected"';}  ?>>No - only logged in users can view archived posts</option>
 </select>
 </td>
 </tr>

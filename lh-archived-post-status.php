@@ -137,7 +137,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             $pageURL = 'http';
 
-            if ( ( isset( $_SERVER["HTTPS"] ) ) and ( $_SERVER["HTTPS"] == "on" ) ) {
+            if ( ( isset( $_SERVER["HTTPS"] ) ) and ( "on"  == $_SERVER["HTTPS"] ) ) {
 
                 $pageURL .= "s";
 
@@ -145,7 +145,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             $pageURL .= "://";
 
-            if ( ( $_SERVER["SERVER_PORT"] != "80" ) and ( $_SERVER["SERVER_PORT"] != "443" ) ) {
+            if ( ( "80" != $_SERVER["SERVER_PORT"] ) and ( "443" != $_SERVER["SERVER_PORT"] ) ) {
 
                 $pageURL .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"];
 
@@ -661,7 +661,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         public function add_posts_rows( $actions, $post ) {
 
-            if ( ( $post->post_status == "publish") and self::is_applicable_post_type( $post->post_type ) ) {
+            if ( ( "publish" == $post->post_status ) and self::is_applicable_post_type( $post->post_type ) ) {
 
                 if ( current_user_can( 'edit_post', $post->ID ) ) {
 
@@ -826,7 +826,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         public function maybe_add_or_remove_expiry( $new_status, $old_status, $post ) {
 
-            if ( ( $new_status == 'publish') and ( $old_status == 'archive' ) ) {
+            if ( ( 'publish' == $new_status ) and ( 'archive' == $old_status ) ) {
 
                 delete_post_meta( $post->ID, '_lh_archive_post_status-post_expires' );
 
