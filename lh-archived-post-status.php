@@ -298,7 +298,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
         }
 
 
-        static function get_archive_post_link( $post = 0) {
+        static function get_archive_post_link( $post = 0 ) {
 
             $post = get_post( $post );
 
@@ -333,7 +333,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
             wp_clear_scheduled_hook( 'lh_archived_post_status_run' );
             wp_clear_scheduled_hook( 'lh_archived_post_status_initial' );
             wp_schedule_event( time() + wp_rand( 10, 3600 ), 'hourly', 'lh_archived_post_status_run' );
-            wp_schedule_single_event( time() + wp_rand( 10, 60), 'lh_archived_post_status_initial');
+            wp_schedule_single_event( time() + wp_rand( 10, 60 ), 'lh_archived_post_status_initial');
 
         }
 
