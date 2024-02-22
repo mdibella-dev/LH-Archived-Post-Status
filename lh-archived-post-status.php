@@ -192,7 +192,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         static function is_applicable_post_type( $post_type ) {
 
-            if ( empty($post_type ) ) {
+            if ( empty( $post_type ) ) {
 
                 return false;
 
@@ -345,7 +345,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         public function admin_edit_columns( $columns ) {
 
-            $columns['lh_archive_post_status-post_expires'] = __( 'Archive Date', self::return_plugin_namespace());
+            $columns['lh_archive_post_status-post_expires'] = __( 'Archive Date', self::return_plugin_namespace() );
 
             return $columns;
 
@@ -360,12 +360,12 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
                 if ( empty( $date ) ) {
 
-                    _e( 'Never', self::return_plugin_namespace());
+                    _e( 'Never', self::return_plugin_namespace() );
 
 
                 } else {
 
-                    echo date(get_option( 'date_format' ), strtotime( $date ) );
+                    echo date( get_option( 'date_format' ), strtotime( $date ) );
 
                 }
             }
@@ -418,9 +418,9 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             }
 
-            if ( ! empty( $_POST[self::return_plugin_namespace() . "-post_edit-nonce"]) && wp_verify_nonce( $_POST[self::return_plugin_namespace() . "-post_edit-nonce"], self::return_plugin_namespace() . "-post_edit-nonce")){
+            if ( ! empty( $_POST[self::return_plugin_namespace() . "-post_edit-nonce"] ) && wp_verify_nonce( $_POST[self::return_plugin_namespace() . "-post_edit-nonce"], self::return_plugin_namespace() . "-post_edit-nonce") ) {
 
-                if ( ! empty($_POST[self::return_plugin_namespace() . '-post_expires']) ){
+                if ( ! empty( $_POST[self::return_plugin_namespace() . '-post_expires'] ) ) {
 
                     $expiry_time = strtotime($_POST[self::return_plugin_namespace() . '-post_expires']);
                     update_post_meta( $post_id, '_' . self::return_plugin_namespace() . '-post_expires', date('Y-m-d H:i:s', $expiry_time));
@@ -481,7 +481,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             $options = get_option( self::return_opt_name() );
 
-            if ( ! empty($options[$args[0]])){
+            if ( ! empty( $options[$args[0]])){
 
                 $value = $options[$args[0]];
 
@@ -496,7 +496,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
                 'textarea_name' => self::return_opt_name() . '[' . $args[0] . ']',
             ];
 
-            wp_editor( $value, self::return_message_field_name(), $settings);
+            wp_editor( $value, self::return_message_field_name(), $settings );
 
         }
 
@@ -569,7 +569,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
                 'reading' // What Page?  This makes the section show up on the General Settings Page
             );
 
-            register_setting('reading',self::return_opt_name(), [
+            register_setting( 'reading', self::return_opt_name(), [
                 $this,
                 'validate_options'
             ] );
@@ -822,7 +822,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         public function maybe_add_or_remove_expiry( $new_status, $old_status, $post ) {
 
-            if ( ($new_status == 'publish') && ( $old_status == 'archive' ) ) {
+            if ( ( $new_status == 'publish') && ( $old_status == 'archive' ) ) {
 
                 delete_post_meta( $post->ID, '_lh_archive_post_status-post_expires' );
 
@@ -929,7 +929,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             $options = get_option( self::return_opt_name() );
 
-            if ( ! empty($options[self::return_publicly_available()] ) ) {
+            if ( ! empty( $options[self::return_publicly_available()] ) ) {
 
                 $public = true;
 
