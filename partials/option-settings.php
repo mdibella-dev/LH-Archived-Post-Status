@@ -4,7 +4,7 @@
     <table class="form-table">
         <tr valign="top">
             <th scope="row">
-                <label for="<?php echo self::return_publicly_available(); ?>"><?php _e( 'Can Archived Posts be read publicly:', self::return_plugin_namespace() ); ?></label>
+                <label for="<?php echo self::return_publicly_available(); ?>"><?php _e( 'Can Archived Posts be read publicly:', 'lh_archive_post_status' ); ?></label>
             </th>
             <td>
                 <select name="<?php echo self::return_publicly_available(); ?>" id="<?php echo self::return_publicly_available(); ?>">
@@ -15,17 +15,17 @@
         </tr>
         <tr valign="top">
             <th scope="row">
-                <label for="<?php echo self::return_title_label_field_name(); ?>"><?php _e( 'Title Label:', self::return_plugin_namespace()); ?></label>
+                <label for="<?php echo self::return_title_label_field_name(); ?>"><?php _e( 'Title Label:', 'lh_archive_post_status'); ?></label>
             </th>
             <td>
                 <input type="text" name="<?php echo self::return_title_label_field_name(); ?>" id="<?php echo self::return_title_label_field_name(); ?>" value="<?php echo $options[self::return_title_label_field_name()] ; ?>" size="20" />
                 <br>
-                <?php _e( 'This label will appear after the title for archived posts on the front end of your website', self::return_plugin_namespace() ); ?>
+                <?php _e( 'This label will appear after the title for archived posts on the front end of your website', 'lh_archive_post_status' ); ?>
             </td>
         </tr>
         <tr valign="top">
             <th scope="row">
-                <label for="<?php echo self::return_message_field_name(); ?>"><?php _e( 'Archive Message:', self::return_plugin_namespace()); ?></label>
+                <label for="<?php echo self::return_message_field_name(); ?>"><?php _e( 'Archive Message:', 'lh_archive_post_status' ); ?></label>
             </th>
             <td>
                 <?php
