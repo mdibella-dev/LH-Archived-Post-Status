@@ -137,7 +137,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             $pageURL = 'http';
 
-            if ( ( isset($_SERVER["HTTPS"] ) ) && ( $_SERVER["HTTPS"] == "on" ) ) {
+            if ( ( isset( $_SERVER["HTTPS"] ) ) && ( $_SERVER["HTTPS"] == "on" ) ) {
 
                 $pageURL .= "s";
 
@@ -145,7 +145,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             $pageURL .= "://";
 
-            if ( ( $_SERVER["SERVER_PORT"] != "80") and ( $_SERVER["SERVER_PORT"] != "443" ) ) {
+            if ( ( $_SERVER["SERVER_PORT"] != "80" ) and ( $_SERVER["SERVER_PORT"] != "443" ) ) {
 
                 $pageURL .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"];
 
@@ -161,7 +161,10 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         static function return_doing_their_own_thing_post_types() {
 
-            $doing_their_own_thing_post_types = ['advanced_ads', 'wc_membership_plan'];
+            $doing_their_own_thing_post_types = [
+                'advanced_ads',
+                'wc_membership_plan'
+            ];
 
             return apply_filters( 'lh_archive_post_status_return_doing_their_own_thing_post_types', $doing_their_own_thing_post_types );
 
