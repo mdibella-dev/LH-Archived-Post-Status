@@ -364,7 +364,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
                 if ( empty( $date ) ) {
 
-                    _e( 'Never', 'lh_archive_post_status' );
+                    echo __( 'Never', 'lh_archive_post_status' );
 
 
                 } else {
@@ -455,8 +455,8 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
             }
 
             ?><select name="<?php echo self::return_opt_name() . '[' . $args[0] . ']'; ?>" id="<?php echo self::return_publicly_available(); ?>"><?php
-            ?><option value="1" <?php  if ( 1 == $selected ) { echo 'selected="selected"'; }  ?>><?php _e( 'Yes - But not in the, main loop, frontpage, or feed', 'lh_archive_post_status' ); ?></option><?php
-            ?><option value="0" <?php  if ( 0 == $selected ) { echo 'selected="selected"'; }  ?>><?php _e( 'No - only logged in users can view archived posts', 'lh_archive_post_status' ); ?></option><?php
+            ?><option value="1" <?php  if ( 1 == $selected ) { echo 'selected="selected"'; }  ?>><?php echo __( 'Yes - But not in the, main loop, frontpage, or feed', 'lh_archive_post_status' ); ?></option><?php
+            ?><option value="0" <?php  if ( 0 == $selected ) { echo 'selected="selected"'; }  ?>><?php echo __( 'No - only logged in users can view archived posts', 'lh_archive_post_status' ); ?></option><?php
             echo '</select>' . '\n';
 
         }
