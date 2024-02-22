@@ -598,7 +598,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
                 }
 
-                if (!empty( $post_status ) and ( $post_status == self::return_new_status_name() ) ) {
+                if ( ! empty( $post_status ) and ( $post_status == self::return_new_status_name() ) ) {
 
                     if ( ! empty($options[self::return_title_label_field_name()]) ) {
 
@@ -675,7 +675,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
                 }
 
-            } elseif ($post->post_status == self::return_new_status_name()){
+            } elseif ( $post->post_status == self::return_new_status_name() ) {
 
                 unset( $actions['edit'] );
                 unset( $actions['trash'] );
@@ -687,7 +687,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
         }
 
 
-        public function ajax_do_archive(){
+        public function ajax_do_archive() {
 
             if ( ! empty( $_GET['action'] ) and ( $_GET['action'] == self::return_plugin_namespace() . '-do_archive' ) and ! empty( $_GET['post_id'] ) and is_numeric( $_GET['post_id'] ) and ! empty( $_GET[self::return_plugin_namespace() . '-post_edit-nonce'] ) ) {
 
@@ -715,10 +715,10 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
                     exit;
                 }
 
-                $my_post = array(
+                $my_post = [
                     'ID'          => $post_id,
                     'post_status' => self::return_new_status_name(),
-                );
+                ];
 
                 wp_update_post( $my_post );
 
