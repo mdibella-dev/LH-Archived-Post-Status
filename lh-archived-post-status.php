@@ -396,7 +396,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             echo '<table class="form-table">' . "\n";
             echo '<tr valign="top">' . "\n";
-            echo '<th scope="row"><label for="' . self::return_plugin_namespace() . '-post_expires">' . __("Archive Date", self::return_plugin_namespace() ) . '</label></th>' . "\n";
+            echo '<th scope="row"><label for="' . self::return_plugin_namespace() . '-post_expires">' . __( "Archive Date", self::return_plugin_namespace() ) . '</label></th>' . "\n";
             echo '<td>' . "\n";
             echo '<input type="date" name="' . self::return_plugin_namespace() . '-post_expires" id="' . self::return_plugin_namespace() . '-post_expires" value="';
 
@@ -422,12 +422,12 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             }
 
-            if ( ! empty( $_POST[self::return_plugin_namespace() . "-post_edit-nonce"] ) and wp_verify_nonce( $_POST[self::return_plugin_namespace() . "-post_edit-nonce"], self::return_plugin_namespace() . "-post_edit-nonce") ) {
+            if ( ! empty( $_POST[self::return_plugin_namespace() . "-post_edit-nonce"] ) and wp_verify_nonce( $_POST[self::return_plugin_namespace() . "-post_edit-nonce"], self::return_plugin_namespace() . "-post_edit-nonce" ) ) {
 
                 if ( ! empty( $_POST[self::return_plugin_namespace() . '-post_expires'] ) ) {
 
-                    $expiry_time = strtotime($_POST[self::return_plugin_namespace() . '-post_expires']);
-                    update_post_meta( $post_id, '_' . self::return_plugin_namespace() . '-post_expires', date('Y-m-d H:i:s', $expiry_time));
+                    $expiry_time = strtotime( $_POST[self::return_plugin_namespace() . '-post_expires'] );
+                    update_post_meta( $post_id, '_' . self::return_plugin_namespace() . '-post_expires', date('Y-m-d H:i:s', $expiry_time ) );
 
                 } else {
 
