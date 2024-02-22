@@ -324,7 +324,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             $link = esc_url( add_query_arg( 'redirect_to', self::curpageurl(), add_query_arg( self::return_plugin_namespace() . '-post_edit-nonce', wp_create_nonce( self::return_plugin_namespace() . '-post_edit-nonce' ), add_query_arg( 'post_id', $post->ID, add_query_arg( 'action', self::return_plugin_namespace() . '-do_archive', admin_url( 'admin-ajax.php' ))) )));
 
-            return apply_filters( self::return_plugin_namespace().'_get_archive_post_link', $link, $post);
+            return apply_filters( self::return_plugin_namespace() . '_get_archive_post_link', $link, $post);
 
         }
 
