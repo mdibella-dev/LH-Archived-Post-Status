@@ -455,8 +455,8 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
             }
 
             ?><select name="<?php echo self::return_opt_name() . '[' . $args[0] . ']'; ?>" id="<?php echo self::return_publicly_available(); ?>"><?php
-            ?><option value="1" <?php  if ( $selected == 1 ) { echo 'selected="selected"'; }  ?>><?php _e( 'Yes - But not in the, main loop, frontpage, or feed', self::return_plugin_namespace() ); ?></option><?php
-            ?><option value="0" <?php  if ( $selected == 0 ) { echo 'selected="selected"'; }  ?>><?php _e( 'No - only logged in users can view archived posts', self::return_plugin_namespace() ); ?></option><?php
+            ?><option value="1" <?php  if ( 1 == $selected ) { echo 'selected="selected"'; }  ?>><?php _e( 'Yes - But not in the, main loop, frontpage, or feed', self::return_plugin_namespace() ); ?></option><?php
+            ?><option value="0" <?php  if ( 0 == $selected ) { echo 'selected="selected"'; }  ?>><?php _e( 'No - only logged in users can view archived posts', self::return_plugin_namespace() ); ?></option><?php
             echo '</select>' . "\n";
 
         }
