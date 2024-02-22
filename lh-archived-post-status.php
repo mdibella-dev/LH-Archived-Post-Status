@@ -103,7 +103,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             if ( true === WP_DEBUG ) {
 
-                if ( is_array( $log ) || is_object( $log ) ) {
+                if ( is_array( $log ) or is_object( $log ) ) {
 
                     error_log( plugin_basename( __FILE__ ) . ' - ' . print_r( $log, true ) );
 
@@ -137,7 +137,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             $pageURL = 'http';
 
-            if ( ( isset( $_SERVER["HTTPS"] ) ) && ( $_SERVER["HTTPS"] == "on" ) ) {
+            if ( ( isset( $_SERVER["HTTPS"] ) ) and ( $_SERVER["HTTPS"] == "on" ) ) {
 
                 $pageURL .= "s";
 
@@ -421,7 +421,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             }
 
-            if ( ! empty( $_POST[self::return_plugin_namespace() . "-post_edit-nonce"] ) && wp_verify_nonce( $_POST[self::return_plugin_namespace() . "-post_edit-nonce"], self::return_plugin_namespace() . "-post_edit-nonce") ) {
+            if ( ! empty( $_POST[self::return_plugin_namespace() . "-post_edit-nonce"] ) and wp_verify_nonce( $_POST[self::return_plugin_namespace() . "-post_edit-nonce"], self::return_plugin_namespace() . "-post_edit-nonce") ) {
 
                 if ( ! empty( $_POST[self::return_plugin_namespace() . '-post_expires'] ) ) {
 
@@ -583,7 +583,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         public function modify_title( $title, $post_id = NULL ) {
 
-            if ( in_the_loop() && is_singular() && ! empty( $post_id ) && is_numeric( $post_id ) && ( $post_id > 0 ) ) {
+            if ( in_the_loop() and is_singular() and ! empty( $post_id ) and is_numeric( $post_id ) and ( $post_id > 0 ) ) {
 
                 $options = get_option( self::return_opt_name() );
 
@@ -616,7 +616,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         public function add_message_to_content( $content ) {
 
-            if ( ! is_admin() && is_singular() && is_main_query() ) {
+            if ( ! is_admin() and is_singular() and is_main_query() ) {
 
                 $options = get_option( self::return_opt_name() );
 
@@ -625,7 +625,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
                     'add_message_to_content'
                 ] );
 
-                if ( ! empty( get_post_status() ) && ( get_post_status() == self::return_new_status_name() ) && ! empty( $options[self::return_message_field_name()] ) ) {
+                if ( ! empty( get_post_status() ) and ( get_post_status() == self::return_new_status_name() ) and ! empty( $options[self::return_message_field_name()] ) ) {
 
                     $message = apply_filters( 'lh_archive_post_status_message_filter', $options[self::return_message_field_name()], $content );
                     $updated_content = apply_filters( 'lh_archive_post_status_content_filter', $message.$content, $content );
@@ -660,7 +660,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         public function add_posts_rows( $actions, $post ) {
 
-            if ( ( $post->post_status == "publish") && self::is_applicable_post_type( $post->post_type ) ) {
+            if ( ( $post->post_status == "publish") and self::is_applicable_post_type( $post->post_type ) ) {
 
                 if ( current_user_can( 'edit_post', $post->ID ) ) {
 
@@ -688,7 +688,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         public function ajax_do_archive(){
 
-            if ( ! empty( $_GET['action'] ) && ( $_GET['action'] == self::return_plugin_namespace() . '-do_archive' ) && ! empty( $_GET['post_id'] ) && is_numeric( $_GET['post_id'] ) && ! empty( $_GET[self::return_plugin_namespace() . '-post_edit-nonce'] ) ) {
+            if ( ! empty( $_GET['action'] ) and ( $_GET['action'] == self::return_plugin_namespace() . '-do_archive' ) and ! empty( $_GET['post_id'] ) and is_numeric( $_GET['post_id'] ) and ! empty( $_GET[self::return_plugin_namespace() . '-post_edit-nonce'] ) ) {
 
                 $post_id = intval( $_GET['post_id'] );
 
@@ -721,7 +721,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
                 wp_update_post( $my_post );
 
-                if ( ! empty( $_GET['redirect_to'] ) && self::isValidURL( trim( $_GET['redirect_to'] ) ) ) {
+                if ( ! empty( $_GET['redirect_to'] ) and self::isValidURL( trim( $_GET['redirect_to'] ) ) ) {
 
                     wp_redirect( trim( $_GET['redirect_to']), 302, self::plugin_name() );
                     exit;
@@ -735,7 +735,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         public function exclude_archive_post_status_from_main_query( $query ) {
 
-            if ( $query->is_main_query() && ! is_admin() && ! is_singular() && empty( $_GET['s'] ) ) {
+            if ( $query->is_main_query() and ! is_admin() and ! is_singular() and empty( $_GET['s'] ) ) {
 
                 if ( current_user_can( 'read_private_posts' ) ) {
 
@@ -756,7 +756,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         public function exclude_archive_post_status_from_feed( $query ) {
 
-            if ( $query->is_feed && ! is_feed( 'lh-sitemaps-general' ) ) {
+            if ( $query->is_feed and ! is_feed( 'lh-sitemaps-general' ) ) {
 
                 if ( current_user_can( 'read_private_posts' ) ) {
 
@@ -787,7 +787,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             if ( $arg != self::return_new_status_name() ) {
 
-                if ( ! empty($post->post_status) && ( $post->post_status == self::return_new_status_name() ) ) {
+                if ( ! empty($post->post_status) and ( $post->post_status == self::return_new_status_name() ) ) {
 
                    return array(ucwords(self::return_new_status_label()));
 
@@ -825,7 +825,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         public function maybe_add_or_remove_expiry( $new_status, $old_status, $post ) {
 
-            if ( ( $new_status == 'publish') && ( $old_status == 'archive' ) ) {
+            if ( ( $new_status == 'publish') and ( $old_status == 'archive' ) ) {
 
                 delete_post_meta( $post->ID, '_lh_archive_post_status-post_expires' );
 
