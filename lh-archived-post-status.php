@@ -515,7 +515,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
         }
 
 
-        public function reading_setting_callback($arguments) {
+        public function reading_setting_callback( $arguments ) {
         }
 
 
