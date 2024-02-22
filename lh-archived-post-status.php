@@ -1059,19 +1059,19 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             }
 
-            if ( $post->post_type != 'post' ) {
+            if ( 'post' != $post->post_type ) {
 
                 return;
 
             }
 
-            if ( $old_status != 'publish' ) {
+            if ( 'publish' != $old_status ) {
 
                 return;
 
             }
 
-            if ( $new_status == 'archive' ) {
+            if ( 'archive' == $new_status ) {
 
                 $dir = str_replace( get_option( 'home' ), '', $url );
                 $path = get_supercache_dir() . $dir;
