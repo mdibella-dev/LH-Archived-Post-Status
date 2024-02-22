@@ -1,16 +1,24 @@
 # LH Archived Post Status
-
-Contributors:      shawfactor
-Donate link:        https://lhero.org/portfolio/lh-archived-post-status/
-Tags:              admin, posts, pages, status, workflow
-Requires at least: 5.0
-Tested up to:      6.3
-Stable tag:         3.10
-License:           GPLv2 or later
-License URI:       http://www.gnu.org/licenses/gpl-2.0.html
-
 Allows posts and pages to be archived so you can remove content from the main loop and feed without having to trash it.
 
+## Contributors
+shawfactor
+
+## Donate link
+https://lhero.org/portfolio/lh-archived-post-status/
+
+## Tags
+admin, posts, pages, status, workflow
+
+## Requires at least:
+
+- WordPress 5.0
+
+## Tested up to
+
+- WordPress 6.3
+
+<br>
 
 ## Description
 
@@ -30,6 +38,7 @@ This plugin is ideal for sites where certain kinds of content is not meant to be
 
 **Love this plugin or want to help the LocalHero Project? Please consider [making a donation](https://lhero.org/portfolio/lh-archived-post-status/).**
 
+<br>
 
 ## Frequently Asked Questions
 
@@ -70,25 +79,26 @@ If you want to customise the display that shortcode has plenty of arguments. The
 The reason is that wordpress no longer recognises them, but they are still in the database. If you no longer need the plugin, just reactivate it, switch all the archived posts/pages/cpts to a native post status and THEN deactivate the plugin.
 
 = What if something does not work?  =
-    
+
 LH Archived Post Status, and all [https://lhero.org](LocalHero) plugins are made to WordPress standards. Therefore they should work with all well coded plugins and themes. However not all plugins and themes are well coded (and this includes many popular ones).
-    
+
 If something does not work properly, firstly deactivate ALL other plugins and switch to one of the themes that come with core, e.g. twentyfifeen, twentysixteen etc.
 
 If the problem persists please leave a post in the support forum: [https://wordpress.org/support/plugin/lh-archived-post-status/](https://wordpress.org/support/plugin/lh-archived-post-status/). I look there regularly and resolve most queries.
-    
+
 = What if I need a feature that is not in the plugin?  =
-    
+
 Please contact me for custom work and enhancements here: [https://shawfactor.com/contact/](https://shawfactor.com/contact/)
 
 = What if this plugin does not work with XXX plugin?  =
-    
+
 The issue is likely is likely with the other plugin, all my lugins follw standards but may do not. Feel free to add a support issue and if I identify a bug I will fix it. But if its not a bug and you need my plugin to be compatible with another then contact outside teh forum for an enahncement.
 
 = Is there a template function to including archiving functionality appropriately on the front end?  =
 
-Yes the plugin defines the function archive_post_link which acts almost identically to the wordpress native function edit_post_link. That is clicking it will archive the relevant post is the current user has the edit_post capability. You can add it to you theme. 
+Yes the plugin defines the function archive_post_link which acts almost identically to the wordpress native function edit_post_link. That is clicking it will archive the relevant post is the current user has the edit_post capability. You can add it to you theme.
 
+<br>
 
 ## Installation
 
@@ -96,10 +106,11 @@ Yes the plugin defines the function archive_post_link which acts almost identica
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Navigate to Settings->Reading and set the visibility and archiving message
 
+<br>
 
 ## Changelog
 
-**0.01 February 12, 2015**  
+**0.01 February 12, 2015**
 * Initial release
 
 **0.02 February 17, 2015**
@@ -185,3 +196,9 @@ Yes the plugin defines the function archive_post_link which acts almost identica
 
 **3.10 October 10, 2023**
 * bumped to latest wp-statuses library, fixed archive link, and defined a template tag for use in the front end
+
+<br>
+
+## License
+
+This package ist released under **GPLv2 or later**. License URI: http://www.gnu.org/licenses/gpl-2.0.html
