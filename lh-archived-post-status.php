@@ -137,21 +137,21 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             $pageURL = 'http';
 
-            if ( ( isset( $_SERVER["HTTPS"] ) ) and ( "on"  == $_SERVER["HTTPS"] ) ) {
+            if ( ( isset( $_SERVER['HTTPS'] ) ) and ( 'on'  == $_SERVER['HTTPS'] ) ) {
 
-                $pageURL .= "s";
+                $pageURL .= 's';
 
             }
 
             $pageURL .= "://";
 
-            if ( ( "80" != $_SERVER["SERVER_PORT"] ) and ( "443" != $_SERVER["SERVER_PORT"] ) ) {
+            if ( ( '80' != $_SERVER['SERVER_PORT'] ) and ( '443' != $_SERVER['SERVER_PORT'] ) ) {
 
-                $pageURL .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"];
+                $pageURL .= $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . $_SERVER['REQUEST_URI'];
 
             } else {
 
-                $pageURL .= $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+                $pageURL .= $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 
             }
 
@@ -226,7 +226,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         static function process_expired_posts() {
 
-            $timestamp = date( "Y-m-d H:i:s", strtotime( 'today midnight' ) );
+            $timestamp = date( 'Y-m-d H:i:s', strtotime( 'today midnight' ) );
 
             $types = get_post_types( [
                 'public' => true
@@ -380,7 +380,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             if ( self::is_applicable_post_type( $post_type ) ) {
 
-                add_meta_box( self::return_plugin_namespace() . "-archive_date-div", __( 'Archive Date', self::return_plugin_namespace() ), [$this, "render_archive_date_box_content"], $post_type, "side", "high", [] );
+                add_meta_box( self::return_plugin_namespace() . '-archive_date-div', __( 'Archive Date', self::return_plugin_namespace() ), [$this, 'render_archive_date_box_content'], $post_type, 'side', 'high', [] );
 
             }
 
@@ -389,15 +389,15 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         public function render_archive_date_box_content( $post, $callback_args ) {
 
-            wp_nonce_field( self::return_plugin_namespace() . "-post_edit-nonce", self::return_plugin_namespace() . "-post_edit-nonce" ) . "\n";
+            wp_nonce_field( self::return_plugin_namespace() . '-post_edit-nonce', self::return_plugin_namespace() . '-post_edit-nonce' ) . '\n';
             $raw_date = get_post_meta( $post->ID, '_' . self::return_plugin_namespace() . '-post_expires', true );
             $archive_date = strtotime( $raw_date);
 
 
-            echo '<table class="form-table">' . "\n";
-            echo '<tr valign="top">' . "\n";
-            echo '<th scope="row"><label for="' . self::return_plugin_namespace() . '-post_expires">' . __( "Archive Date", self::return_plugin_namespace() ) . '</label></th>' . "\n";
-            echo '<td>' . "\n";
+            echo '<table class="form-table">' . '\n';
+            echo '<tr valign="top">' . '\n';
+            echo '<th scope="row"><label for="' . self::return_plugin_namespace() . '-post_expires">' . __( 'Archive Date', self::return_plugin_namespace() ) . '</label></th>' . '\n';
+            echo '<td>' . '\n';
             echo '<input type="date" name="' . self::return_plugin_namespace() . '-post_expires" id="' . self::return_plugin_namespace() . '-post_expires" value="';
 
             if ( ! empty( $raw_date ) ) {
@@ -406,10 +406,10 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             }
 
-            echo '" />' . "\n";
-            echo '</td>' . "\n";
-            echo '</tr>' . "\n";
-            echo '</table>' . "\n";
+            echo '" />' . '\n';
+            echo '</td>' . '\n';
+            echo '</tr>' . '\n';
+            echo '</table>' . '\n';
 
         }
 
@@ -422,7 +422,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             }
 
-            if ( ! empty( $_POST[self::return_plugin_namespace() . "-post_edit-nonce"] ) and wp_verify_nonce( $_POST[self::return_plugin_namespace() . "-post_edit-nonce"], self::return_plugin_namespace() . "-post_edit-nonce" ) ) {
+            if ( ! empty( $_POST[self::return_plugin_namespace() . '-post_edit-nonce'] ) and wp_verify_nonce( $_POST[self::return_plugin_namespace() . '-post_edit-nonce'], self::return_plugin_namespace() . '-post_edit-nonce' ) ) {
 
                 if ( ! empty( $_POST[self::return_plugin_namespace() . '-post_expires'] ) ) {
 
@@ -457,7 +457,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
             ?><select name="<?php echo self::return_opt_name() . '[' . $args[0] . ']'; ?>" id="<?php echo self::return_publicly_available(); ?>"><?php
             ?><option value="1" <?php  if ( 1 == $selected ) { echo 'selected="selected"'; }  ?>><?php _e( 'Yes - But not in the, main loop, frontpage, or feed', self::return_plugin_namespace() ); ?></option><?php
             ?><option value="0" <?php  if ( 0 == $selected ) { echo 'selected="selected"'; }  ?>><?php _e( 'No - only logged in users can view archived posts', self::return_plugin_namespace() ); ?></option><?php
-            echo '</select>' . "\n";
+            echo '</select>' . '\n';
 
         }
 
@@ -476,7 +476,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             }
 
-            echo '<input type="text" name="' . self::return_opt_name() . '[' . $args[0] . ']" id="' . $args[0] . '" value="' . $value . '" size="20" /><br/>' . __( 'This label will appear after the title for archived posts on the front end of your website', self::return_plugin_namespace() ) . "\n";
+            echo '<input type="text" name="' . self::return_opt_name() . '[' . $args[0] . ']" id="' . $args[0] . '" value="' . $value . '" size="20" /><br/>' . __( 'This label will appear after the title for archived posts on the front end of your website', self::return_plugin_namespace() ) . '\n';
 
         }
 
@@ -661,7 +661,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         public function add_posts_rows( $actions, $post ) {
 
-            if ( ( "publish" == $post->post_status ) and self::is_applicable_post_type( $post->post_type ) ) {
+            if ( ( 'publish' == $post->post_status ) and self::is_applicable_post_type( $post->post_type ) ) {
 
                 if ( current_user_can( 'edit_post', $post->ID ) ) {
 
@@ -709,7 +709,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
                 }
 
-                if ( ! wp_verify_nonce( $_GET[self::return_plugin_namespace() . '-post_edit-nonce'], self::return_plugin_namespace() . "-post_edit-nonce" ) ) {
+                if ( ! wp_verify_nonce( $_GET[self::return_plugin_namespace() . '-post_edit-nonce'], self::return_plugin_namespace() . '-post_edit-nonce' ) ) {
 
                     echo __( 'Incorrect Nonce', self::return_plugin_namespace() );
                     exit;
@@ -870,9 +870,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
                 if ( is_string( $args['post_status'] ) ) {
 
-                    $args['post_status'] = [
-                        $args['post_status']
-                    ];
+                    $args['post_status'] = [$args['post_status']];
 
                 }
 
@@ -1003,7 +1001,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         public function define_global_functions() {
 
-            if ( ! function_exists( "archive_post_link" ) ) {
+            if ( ! function_exists( 'archive_post_link' ) ) {
 
                 function archive_post_link( $text = null, $before = '', $after = '', $post = 0, $class = 'post-archive-link' ) {
 

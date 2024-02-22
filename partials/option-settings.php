@@ -1,9 +1,9 @@
 <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
 <form name="form1" method="post" action="">
-<?php wp_nonce_field( self::return_plugin_namespace() . "-nonce", self::return_plugin_namespace() . "-nonce", false ); ?>
+<?php wp_nonce_field( self::return_plugin_namespace() . '-nonce', self::return_plugin_namespace() . '-nonce', false ); ?>
 <table class="form-table">
 <tr valign="top">
-<th scope="row"><label for="<?php echo self::return_publicly_available(); ?>"><?php _e( "Can Archived Posts be read publicly:", self::return_plugin_namespace() ); ?></label></th>
+<th scope="row"><label for="<?php echo self::return_publicly_available(); ?>"><?php _e( 'Can Archived Posts be read publicly:', self::return_plugin_namespace() ); ?></label></th>
 <td><select name="<?php echo self::return_publicly_available(); ?>" id="<?php echo self::return_publicly_available(); ?>">
 <option value="1" <?php  if ( 1 == $options[self::return_publicly_available()] ){ echo 'selected="selected"'; }  ?>>Yes - But not in the, main loop, frontpage, or feed</option>
 <option value="0" <?php  if ( 0 == $options[self::return_publicly_available()] ){ echo 'selected="selected"';}  ?>>No - only logged in users can view archived posts</option>
@@ -11,15 +11,15 @@
 </td>
 </tr>
 <tr valign="top">
-<th scope="row"><label for="<?php echo self::return_title_label_field_name(); ?>"><?php _e("Title Label:", self::return_plugin_namespace()); ?></label>
+<th scope="row"><label for="<?php echo self::return_title_label_field_name(); ?>"><?php _e( 'Title Label:', self::return_plugin_namespace()); ?></label>
 </th>
-<td><input type="text" name="<?php echo self::return_title_label_field_name(); ?>" id="<?php echo self::return_title_label_field_name(); ?>" value="<?php echo $options[self::return_title_label_field_name()] ; ?>" size="20" /><br/><?php _e( "This label will appear after the title for archived posts on the front end of your website", self::return_plugin_namespace() ); ?>
+<td><input type="text" name="<?php echo self::return_title_label_field_name(); ?>" id="<?php echo self::return_title_label_field_name(); ?>" value="<?php echo $options[self::return_title_label_field_name()] ; ?>" size="20" /><br/><?php _e( 'This label will appear after the title for archived posts on the front end of your website', self::return_plugin_namespace() ); ?>
 </td>
 </tr>
 
 
 <tr valign="top">
-<th scope="row"><label for="<?php echo self::return_message_field_name(); ?>"><?php _e("Archive Message:", self::return_plugin_namespace()); ?></label></th>
+<th scope="row"><label for="<?php echo self::return_message_field_name(); ?>"><?php _e( 'Archive Message:', self::return_plugin_namespace()); ?></label></th>
 <td>
 <?php
 $settings = ['media_buttons' => false];
