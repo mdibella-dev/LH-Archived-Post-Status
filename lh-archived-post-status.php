@@ -740,11 +740,16 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
                 if ( current_user_can( 'read_private_posts' ) ) {
 
-                    $post_status = array( 'publish', 'private' );
+                    $post_status = [
+                        'publish',
+                        'private'
+                    ];
 
                 } else {
 
-                    $post_status = array( 'publish' );
+                    $post_status = [
+                        'publish'
+                    ];
 
                 }
 
@@ -788,9 +793,9 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             if ( $arg != self::return_new_status_name() ) {
 
-                if ( ! empty($post->post_status) and ( $post->post_status == self::return_new_status_name() ) ) {
+                if ( ! empty( $post->post_status ) and ( $post->post_status == self::return_new_status_name() ) ) {
 
-                   return array(ucwords(self::return_new_status_label()));
+                   return [ucwords(self::return_new_status_label())];
 
                 }
 
@@ -813,7 +818,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
             if ( ! get_option( self::return_opt_name() ) ) {
 
                 $options[self::return_publicly_available()] = true;
-                $options[self::return_message_field_name()] = '<p>' . __('This content has been archived. It may no longer be relevant', self::return_plugin_namespace() ) . '</p>';
+                $options[self::return_message_field_name()] = '<p>' . __( 'This content has been archived. It may no longer be relevant', self::return_plugin_namespace() ) . '</p>';
 
                 update_option( self::return_opt_name(), $options );
 
@@ -1245,7 +1250,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         static function on_activate($network_wide) {
 
-            if ( is_multisite() && $network_wide ) {
+            if ( is_multisite() and $network_wide ) {
 
                 $args = [
                     'number' => 500,
@@ -1273,7 +1278,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         static function on_deactivate( $network_wide ) {
 
-            if ( is_multisite() && $network_wide ) {
+            if ( is_multisite() and $network_wide ) {
 
                 $args = [
                     'number' => 500,
