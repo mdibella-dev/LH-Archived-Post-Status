@@ -223,6 +223,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         }
 
+
         static function process_expired_posts(){
 
             $timestamp = date( "Y-m-d H:i:s", strtotime( 'today midnight' ) );
