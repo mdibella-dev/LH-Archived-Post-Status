@@ -39,7 +39,7 @@ This plugin is ideal for sites where certain kinds of content is not meant to be
 
 ## Frequently Asked Questions
 
-* Isn't this the same as using the Draft or Private statuses? *
+**Isn't this the same as using the Draft or Private statuses?**
 
 Actually, no, they are not the same thing.
 
@@ -49,11 +49,11 @@ The Private status is a special kind of published status. It means the content i
 
 The Archived post status, on the other hand, is meant to be a "post-published" status. Once a post has been set to Archived the content is either hidden entirely from non logged in viewers or removed from the front page and feed (but still available on singular pages). This behaviour is controlled in the settings screen.
 
-* Doesn't this do the same thing as the other archiving plugin in the repository? *
+**Doesn't this do the same thing as the other archiving plugin in the repository?**
 
 Actually it does more! Unlike the other plugin content archived with this plugin can still be available to non logged in visitors (depends on plugin settings) and just  removed from the front page and xml feeds (with a custom message can also be added to flag to visitors that the content is no longer up too date). Alternately it can be hidden entirely (to non logged in viewers).
 
-*Can't I just trash old content I don't want anymore? *
+**Can't I just trash old content I don't want anymore?**
 
 Yes, there is nothing wrong with trashing old content. However it will be hidden from non logged in viewers.
 
@@ -61,7 +61,7 @@ However, WordPress automatically purges trashed posts every 7 days (by default),
 
 This is what makes the Archived post status handy. You can unpublish content without having to delete it forever.
 
-*How can I view a listing of my archived content on its own archive pagelisting all archived posts, pages etc?*
+**How can I view a listing of my archived content on its own archive pagelisting all archived posts, pages etc?**
 
 This not not part of my plugin per se but it is easily done.
 
@@ -71,11 +71,11 @@ and input the shortcode with the post_status of archive:, eg [display-posts post
 
 If you want to customise the display that shortcode has plenty of arguments. There are also other shortcodes tha can do this (just search the repository).
 
-*My archived posts have disappeared when I deactivate the plugin, why is this?*
+**My archived posts have disappeared when I deactivate the plugin, why is this?**
 
 The reason is that WordPress no longer recognises them, but they are still in the database. If you no longer need the plugin, just reactivate it, switch all the archived posts/pages/cpts to a native post status and THEN deactivate the plugin.
 
-*What if something does not work?*
+**What if something does not work?**
 
 LH Archived Post Status, and all [https://lhero.org](LocalHero) plugins are made to WordPress standards. Therefore they should work with all well coded plugins and themes. However not all plugins and themes are well coded (and this includes many popular ones).
 
@@ -83,11 +83,11 @@ If something does not work properly, firstly deactivate ALL other plugins and sw
 
 If the problem persists please leave a post in the support forum: [https://wordpress.org/support/plugin/lh-archived-post-status/](https://wordpress.org/support/plugin/lh-archived-post-status/). I look there regularly and resolve most queries.
 
-*What if I need a feature that is not in the plugin?*
+**What if I need a feature that is not in the plugin?**
 
 Please contact me for custom work and enhancements here: [https://shawfactor.com/contact/](https://shawfactor.com/contact/)
 
-* Is there a template function to including archiving functionality appropriately on the front end?*
+**Is there a template function to including archiving functionality appropriately on the front end?**
 
 Yes the plugin defines the function archive_post_link which acts almost identically to the WordPress native function edit_post_link. That is clicking it will archive the relevant post is the current user has the edit_post capability. You can add it to you theme.
 
