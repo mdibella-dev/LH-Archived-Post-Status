@@ -57,42 +57,42 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
         }
 
 
-        static function return_publicly_available(){
+        static function return_publicly_available() {
 
             return 'public';
 
         }
 
 
-        static function return_message_field_name(){
+        static function return_message_field_name() {
 
             return 'lh_archive_post_status_message';
 
         }
 
 
-        static function return_new_status_name(){
+        static function return_new_status_name() {
 
             return 'archive';
 
         }
 
 
-        static function return_title_label_field_name(){
+        static function return_title_label_field_name() {
 
             return 'lh_archive_post_status-title_label';
 
         }
 
 
-        static function return_new_status_label(){
+        static function return_new_status_label() {
 
             return __( 'archived', self::return_plugin_namespace() );
 
         }
 
 
-        static function return_new_status_count(){
+        static function return_new_status_count() {
 
             return __( 'Archived', self::return_plugin_namespace() ) . ' <span class="count">(%s)</span>';
 
@@ -224,7 +224,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
         }
 
 
-        static function process_expired_posts(){
+        static function process_expired_posts() {
 
             $timestamp = date( "Y-m-d H:i:s", strtotime( 'today midnight' ) );
 
@@ -339,7 +339,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
         }
 
 
-        static function remove_crons(){
+        static function remove_crons() {
 
             wp_clear_scheduled_hook( 'lh_archived_post_status_run' );
             wp_clear_scheduled_hook( 'lh_archived_post_status_initial' );
@@ -485,7 +485,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             $options = get_option( self::return_opt_name() );
 
-            if ( ! empty( $options[$args[0]])){
+            if ( ! empty( $options[$args[0]])) {
 
                 $value = $options[$args[0]];
 
@@ -515,11 +515,11 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
         }
 
 
-        public function reading_setting_callback($arguments){
+        public function reading_setting_callback($arguments) {
         }
 
 
-        public function add_configuration_section(){
+        public function add_configuration_section() {
 
             add_settings_field( // Option 1
                 self::return_publicly_available(), // Option ID
@@ -648,7 +648,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
         }
 
 
-        public function after_body_open(){
+        public function after_body_open() {
 
             add_filter( 'the_content', [
                 $this,
@@ -812,7 +812,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
         }
 
 
-        public function initial_processes(){
+        public function initial_processes() {
 
             if ( ! get_option( self::return_opt_name() ) ) {
 
@@ -885,7 +885,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
         }
 
 
-        public function lh_super_cache_helper_statuses( $statuses ){
+        public function lh_super_cache_helper_statuses( $statuses ) {
 
             $statuses[] = 'archive';
 
@@ -918,7 +918,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
         }
 
 
-        public function maybe_make_checkable( $statuses ){
+        public function maybe_make_checkable( $statuses ) {
 
             $options = get_option( self::return_opt_name() );
 
@@ -1084,7 +1084,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
         }
 
 
-        public function plugin_init(){
+        public function plugin_init() {
 
             // Load the translations, both plugin specific and the wp-statuses library
             load_plugin_textdomain( self::return_plugin_namespace(), false, basename( dirname( __FILE__ ) ) . '/languages' );
@@ -1238,7 +1238,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
         * using the singleton pattern
         */
 
-        public static function get_instance(){
+        public static function get_instance() {
             if (null === self::$instance) {
                 self::$instance = new self();
             }
@@ -1247,7 +1247,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
         }
 
 
-        static function on_activate($network_wide) {
+        static function on_activate( $network_wide ) {
 
             if ( is_multisite() and $network_wide ) {
 
