@@ -8,14 +8,14 @@
             </th>
             <td>
                 <select name="<?php echo self::return_publicly_available(); ?>" id="<?php echo self::return_publicly_available(); ?>">
-                    <option value="1" <?php  if ( 1 == $options[self::return_publicly_available()] ){ echo 'selected="selected"'; }  ?>>Yes - But not in the, main loop, frontpage, or feed</option>
-                    <option value="0" <?php  if ( 0 == $options[self::return_publicly_available()] ){ echo 'selected="selected"';}  ?>>No - only logged in users can view archived posts</option>
+                    <option value="1" <?php  if ( 1 == $options[self::return_publicly_available()] ){ echo 'selected="selected"'; }  ?>><?php echo __( 'Yes - But not in the, main loop, frontpage, or feed', 'lh_archive_post_status' ); ?></option>
+                    <option value="0" <?php  if ( 0 == $options[self::return_publicly_available()] ){ echo 'selected="selected"';}  ?>><?php echo __( 'No - only logged in users can view archived posts', 'lh_archive_post_status' ); ?></option>
                 </select>
             </td>
         </tr>
         <tr valign="top">
             <th scope="row">
-                <label for="<?php echo self::return_title_label_field_name(); ?>"><?php echo __( 'Title Label:', 'lh_archive_post_status'); ?></label>
+                <label for="<?php echo self::return_title_label_field_name(); ?>"><?php echo __( 'Title Label:', 'lh_archive_post_status' ); ?></label>
             </th>
             <td>
                 <input type="text" name="<?php echo self::return_title_label_field_name(); ?>" id="<?php echo self::return_title_label_field_name(); ?>" value="<?php echo $options[self::return_title_label_field_name()] ; ?>" size="20" />
