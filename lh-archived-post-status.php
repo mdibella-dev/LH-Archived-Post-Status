@@ -416,7 +416,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         public function update_post_details( $post_id, $post, $update ) {
 
-            if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+            if ( defined( 'DOING_AUTOSAVE' ) and DOING_AUTOSAVE ) {
 
                 return;
 
