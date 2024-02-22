@@ -1,20 +1,21 @@
 # LH Archived Post Status
 Allows posts and pages to be archived so you can remove content from the main loop and feed without having to trash it.
 
-## Contributors
+<br>
+
+## Development Info
+
+### Contributors
 shawfactor
 
-## Donate link
-https://lhero.org/portfolio/lh-archived-post-status/
-
-## Tags
+### Tags
 admin, posts, pages, status, workflow
 
-## Requires at least:
+### Requires at least:
 
 - WordPress 5.0
 
-## Tested up to
+### Tested up to
 
 - WordPress 6.3
 
