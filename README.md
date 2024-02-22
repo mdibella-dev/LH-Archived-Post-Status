@@ -11,7 +11,7 @@ shawfactor (original contributor), [Marco Di Bella ](https://github.com/mdibella
 ### Tags
 admin, posts, pages, status, workflow
 
-### Requires at least:
+### Requires at least
 
 - WordPress 5.0
 
