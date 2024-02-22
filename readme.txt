@@ -1,6 +1,6 @@
 === LH Archived Post Status ===
 Contributors:      shawfactor
-Donate link: 	   https://lhero.org/portfolio/lh-archived-post-status/
+Donate link:        https://lhero.org/portfolio/lh-archived-post-status/
 Tags:              admin, posts, pages, status, workflow
 Requires at least: 5.0
 Tested up to:      6.3
@@ -68,19 +68,19 @@ If you want to customise the display that shortcode has plenty of arguments. The
 The reason is that wordpress no longer recognises them, but they are still in the database. If you no longer need the plugin, just reactivate it, switch all the archived posts/pages/cpts to a native post status and THEN deactivate the plugin.
 
 = What if something does not work?  =
-	
+    
 LH Archived Post Status, and all [https://lhero.org](LocalHero) plugins are made to WordPress standards. Therefore they should work with all well coded plugins and themes. However not all plugins and themes are well coded (and this includes many popular ones).
-	
+    
 If something does not work properly, firstly deactivate ALL other plugins and switch to one of the themes that come with core, e.g. twentyfifeen, twentysixteen etc.
 
 If the problem persists please leave a post in the support forum: [https://wordpress.org/support/plugin/lh-archived-post-status/](https://wordpress.org/support/plugin/lh-archived-post-status/). I look there regularly and resolve most queries.
-	
+    
 = What if I need a feature that is not in the plugin?  =
-	
+    
 Please contact me for custom work and enhancements here: [https://shawfactor.com/contact/](https://shawfactor.com/contact/)
 
 = What if this plugin does not work with XXX plugin?  =
-	
+    
 The issue is likely is likely with the other plugin, all my lugins follw standards but may do not. Feel free to add a support issue and if I identify a bug I will fix it. But if its not a bug and you need my plugin to be compatible with another then contact outside teh forum for an enahncement.
 
 = Is there a template function to including archiving functionality appropriately on the front end?  =

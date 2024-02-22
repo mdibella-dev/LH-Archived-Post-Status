@@ -36,20 +36,20 @@ $roles = bp_blogs_get_allowed_roles();
 
 print_r($roles);
 
-	$suggestions = bp_core_get_suggestions( array(
-		'group_id' => -145,  // A negative value will exclude this group's members from the suggestions.
-		'limit'    => 10,
-		'term'     => 'Keiran',
-		'type'     => 'members',
-	) );
-	
-	print_r($suggestions);
-	
+    $suggestions = bp_core_get_suggestions( array(
+        'group_id' => -145,  // A negative value will exclude this group's members from the suggestions.
+        'limit'    => 10,
+        'term'     => 'Keiran',
+        'type'     => 'members',
+    ) );
+    
+    print_r($suggestions);
+    
 LH_Buddypress_multi_network_plugin::prepare_all_users();
-	
-//	print_r($bp);
-	
-	
+    
+//    print_r($bp);
+    
+    
 
 ?>
 </form>

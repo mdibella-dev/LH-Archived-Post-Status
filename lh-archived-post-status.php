@@ -8,13 +8,13 @@
  * Author URI:      https://shawfactor.com/
  * Text Domain:     lh_archive_post_status
  * License:         GPL2+
- * Domain Path:     /languages/
+ * Domain Path:     /languages
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 if (!class_exists('WP_Statuses')) {
-    
+
     include_once('includes/wp-statuses/wp-statuses.php');
 
 }
@@ -124,27 +124,27 @@ class LH_archived_post_status_plugin {
 
     static function curpageurl() {
 
-    	$pageURL = 'http';
+        $pageURL = 'http';
 
-    	if ((isset($_SERVER["HTTPS"])) && ($_SERVER["HTTPS"] == "on")){
+        if ((isset($_SERVER["HTTPS"])) && ($_SERVER["HTTPS"] == "on")){
 
-    		$pageURL .= "s";
+            $pageURL .= "s";
 
         }
 
-    	$pageURL .= "://";
+        $pageURL .= "://";
 
-    	if (($_SERVER["SERVER_PORT"] != "80") and ($_SERVER["SERVER_PORT"] != "443")){
+        if (($_SERVER["SERVER_PORT"] != "80") and ($_SERVER["SERVER_PORT"] != "443")){
 
-    		$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+            $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
 
-    	} else {
+        } else {
 
-    		$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+            $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
 
-    	}
+        }
 
-    	return $pageURL;
+        return $pageURL;
 
     }
 
@@ -191,16 +191,16 @@ class LH_archived_post_status_plugin {
 
     static function current_user_can_view() {
 
-	    /**
-	    * Default capability to grant ability to view Archived content (if the status is set to non public)
-	    *
-	    * @since 0.3.0
-	    *
-	    * @return string
-	    */
-	    $capability = 'read_private_posts';
+        /**
+        * Default capability to grant ability to view Archived content (if the status is set to non public)
+        *
+        * @since 0.3.0
+        *
+        * @return string
+        */
+        $capability = 'read_private_posts';
 
-	    return current_user_can( $capability );
+        return current_user_can( $capability );
 
     }
 
@@ -282,13 +282,13 @@ class LH_archived_post_status_plugin {
 
         if ( empty($post->ID) ) {
 
-		    return false;
+            return false;
 
         }
 
         if ( ! current_user_can( 'edit_post', $post->ID ) ) {
 
-		    return false;
+            return false;
 
         }
 
@@ -327,21 +327,21 @@ class LH_archived_post_status_plugin {
 
     public function admin_edit_columns( $columns ) {
 
-		$columns['lh_archive_post_status-post_expires'] = __( 'Archive Date', self::return_plugin_namespace());
+        $columns['lh_archive_post_status-post_expires'] = __( 'Archive Date', self::return_plugin_namespace());
 
-		return $columns;
+        return $columns;
 
-	}
+    }
 
-	public function admin_edit_column_values( $column, $post_id ) {
+    public function admin_edit_column_values( $column, $post_id ) {
 
-		if ( 'lh_archive_post_status-post_expires' == $column ) {
+        if ( 'lh_archive_post_status-post_expires' == $column ) {
 
             $date = get_post_meta( $post_id, '_lh_archive_post_status-post_expires', true );
 
             if (empty($date)){
 
-			    _e( 'Never', self::return_plugin_namespace());
+                _e( 'Never', self::return_plugin_namespace());
 
 
             } else {
@@ -349,8 +349,8 @@ class LH_archived_post_status_plugin {
                 echo date(get_option( 'date_format' ), strtotime($date));
 
             }
-		}
-	}
+        }
+    }
 
     public function add_meta_boxes($post_type, $post)  {
 
@@ -505,7 +505,7 @@ class LH_archived_post_status_plugin {
             'reading', // Page it will be displayed (General Settings)
             self::return_opt_name(), // Name of our section
             array( // The $args
-	            self::return_publicly_available() // Should match Option ID
+                self::return_publicly_available() // Should match Option ID
             )
         );
 
@@ -668,7 +668,7 @@ class LH_archived_post_status_plugin {
 
             if ( ! current_user_can( 'edit_post', $post_id ) ) {
 
-		        echo __('Current user does not have capability', self::return_plugin_namespace());
+                echo __('Current user does not have capability', self::return_plugin_namespace());
                 exit;
 
 
@@ -701,7 +701,7 @@ class LH_archived_post_status_plugin {
 
     public function exclude_archive_post_status_from_main_query( $query ) {
 
-	    if ( $query->is_main_query() && !is_admin() && !is_singular() && empty($_GET['s'])) {
+        if ( $query->is_main_query() && !is_admin() && !is_singular() && empty($_GET['s'])) {
 
             if ( current_user_can('read_private_posts') ) {
 
@@ -713,16 +713,16 @@ class LH_archived_post_status_plugin {
 
             }
 
-		    $query->set( 'post_status', $post_status );
+            $query->set( 'post_status', $post_status );
 
-	    }
+        }
 
     }
 
 
     public function exclude_archive_post_status_from_feed( $query ) {
 
-	    if ($query->is_feed && !is_feed('lh-sitemaps-general')){
+        if ($query->is_feed && !is_feed('lh-sitemaps-general')){
 
             if ( current_user_can('read_private_posts') ) {
 
@@ -734,9 +734,9 @@ class LH_archived_post_status_plugin {
 
             }
 
-		    $query->set( 'post_status', $post_status );
+            $query->set( 'post_status', $post_status );
 
-	    }
+        }
 
     }
 
@@ -910,30 +910,30 @@ class LH_archived_post_status_plugin {
         }
 
         $args = array(
-    		    'label'                     => _x( ucwords(self::return_new_status_label()), 'post status label', self::return_plugin_namespace() ),
-    		    'public'                    => $public,
-    		    'label_count'               => _n_noop( self::return_new_status_count(), self::return_new_status_count(), self::return_plugin_namespace() ),
-    		    'post_type'                 => self::get_applicable_post_types(), // Define one or more post types the status can be applied to.
-    		    'show_in_admin_all_list'    => true,
-    		    'show_in_admin_status_list' => true,
-    		    'show_in_metabox_dropdown'  => true,
-    		    'show_in_inline_dropdown'   => true,
-    		    'publicly_queryable'        => true,
-    		    'dashicon'                  => 'dashicons-archive',
-    		    'labels'                      => array(
-        			'metabox_dropdown'    => __( 'Archived', self::return_plugin_namespace() ),
-        			'metabox_submit'      => __( 'Archive', self::return_plugin_namespace()),
-        			'metabox_save_on'     => __( 'Archive on:', self::return_plugin_namespace() ),
-        			/* translators: Post date information. 1: Date on which the post is to be archived */
-        			'metabox_save_date'   => __( 'Archive on: <b>%1$s</b>', self::return_plugin_namespace() ),
-        			'metabox_saved_on'    => __( 'Archived on:', self::return_plugin_namespace() ),
-        			/* translators: Post date information. 1: Date on which the post was archived */
-        			'metabox_saved_date'  => __( 'Archived on: <b>%1$s</b>', self::return_plugin_namespace()),
-        			'metabox_save_now'    => __( 'Archive <b>now</b>', self::return_plugin_namespace() ),
-        			'inline_dropdown'     => __( 'Archived', self::return_plugin_namespace() ),
-        			'press_this_dropdown' => __( 'Add to archives', self::return_plugin_namespace() ),
-    		    ),
-	        );
+                'label'                     => _x( ucwords(self::return_new_status_label()), 'post status label', self::return_plugin_namespace() ),
+                'public'                    => $public,
+                'label_count'               => _n_noop( self::return_new_status_count(), self::return_new_status_count(), self::return_plugin_namespace() ),
+                'post_type'                 => self::get_applicable_post_types(), // Define one or more post types the status can be applied to.
+                'show_in_admin_all_list'    => true,
+                'show_in_admin_status_list' => true,
+                'show_in_metabox_dropdown'  => true,
+                'show_in_inline_dropdown'   => true,
+                'publicly_queryable'        => true,
+                'dashicon'                  => 'dashicons-archive',
+                'labels'                      => array(
+                    'metabox_dropdown'    => __( 'Archived', self::return_plugin_namespace() ),
+                    'metabox_submit'      => __( 'Archive', self::return_plugin_namespace()),
+                    'metabox_save_on'     => __( 'Archive on:', self::return_plugin_namespace() ),
+                    /* translators: Post date information. 1: Date on which the post is to be archived */
+                    'metabox_save_date'   => __( 'Archive on: <b>%1$s</b>', self::return_plugin_namespace() ),
+                    'metabox_saved_on'    => __( 'Archived on:', self::return_plugin_namespace() ),
+                    /* translators: Post date information. 1: Date on which the post was archived */
+                    'metabox_saved_date'  => __( 'Archived on: <b>%1$s</b>', self::return_plugin_namespace()),
+                    'metabox_save_now'    => __( 'Archive <b>now</b>', self::return_plugin_namespace() ),
+                    'inline_dropdown'     => __( 'Archived', self::return_plugin_namespace() ),
+                    'press_this_dropdown' => __( 'Add to archives', self::return_plugin_namespace() ),
+                ),
+            );
 
         register_post_status( self::return_new_status_name(), $args );
 
@@ -964,35 +964,35 @@ class LH_archived_post_status_plugin {
 
                 $post = get_post( $post );
 
-            	if ( ! $post ) {
-            		return;
-            	}
+                if ( ! $post ) {
+                    return;
+                }
 
-	            $url = LH_archived_post_status_plugin::get_archive_post_link( $post->ID );
+                $url = LH_archived_post_status_plugin::get_archive_post_link( $post->ID );
 
-            	if ( ! $url ) {
+                if ( ! $url ) {
 
-            		return;
+                    return;
 
-            	}
+                }
 
-            	if ( null === $text ) {
-            		$text = __( 'Archive This' );
-            	}
+                if ( null === $text ) {
+                    $text = __( 'Archive This' );
+                }
 
-	            $link = '<a class="' . esc_attr( $class ) . '" href="' . esc_url( $url ) . '">' . $text . '</a>';
+                $link = '<a class="' . esc_attr( $class ) . '" href="' . esc_url( $url ) . '">' . $text . '</a>';
 
-            	/**
-            	 * Filters the post edit link anchor tag.
-            	 *
-            	 * @since 2.3.0
-            	 *
-            	 * @param string $link    Anchor tag for the edit link.
-            	 * @param int    $post_id Post ID.
-            	 * @param string $text    Anchor text.
-            	 */
+                /**
+                 * Filters the post edit link anchor tag.
+                 *
+                 * @since 2.3.0
+                 *
+                 * @param string $link    Anchor tag for the edit link.
+                 * @param int    $post_id Post ID.
+                 * @param string $text    Anchor text.
+                 */
 
-            	echo $before . apply_filters( 'archive_post_link', $link, $post->ID, $text ) . $after;
+                echo $before . apply_filters( 'archive_post_link', $link, $post->ID, $text ) . $after;
 
             }
         }
@@ -1009,7 +1009,7 @@ class LH_archived_post_status_plugin {
 
         if ( $old_status == $new_status ){
 
-		    return;
+            return;
 
         }
 
@@ -1068,7 +1068,7 @@ class LH_archived_post_status_plugin {
         add_filter('post_row_actions',array($this,'add_posts_rows'),10,2);
 
         //create a admin ajax endpoint for archiving posts
-		add_action( 'wp_ajax_'.self::return_plugin_namespace().'-do_archive', array( $this, 'ajax_do_archive' ) );
+        add_action( 'wp_ajax_'.self::return_plugin_namespace().'-do_archive', array( $this, 'ajax_do_archive' ) );
 
         //Add a label to the listing table
         add_filter( 'display_post_states', array($this,'display_archive_state'),10,2);
@@ -1116,7 +1116,7 @@ class LH_archived_post_status_plugin {
 
     }
 
-	/**
+    /**
     * Gets an instance of our plugin.
     *
     * using the singleton pattern

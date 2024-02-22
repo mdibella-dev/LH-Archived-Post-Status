@@ -27,207 +27,207 @@ if ( ! class_exists( 'WP_Statuses' ) ) :
  */
 final class WP_Statuses {
 
-	/**
-	 * Plugin's main instance
-	 *
-	 * @var object
-	 */
-	protected static $instance;
+    /**
+     * Plugin's main instance
+     *
+     * @var object
+     */
+    protected static $instance;
 
-	/**
-	 * Used to store dynamic properties.
-	 *
-	 * @var array
-	 */
-	private $data = array();
+    /**
+     * Used to store dynamic properties.
+     *
+     * @var array
+     */
+    private $data = array();
 
-	/**
-	 * Initialize the plugin
-	 *
-	 * @since 1.0.0
-	 */
-	private function __construct() {
-		$this->setup_globals();
-		$this->inc();
-		$this->setup_hooks();
-	}
+    /**
+     * Initialize the plugin
+     *
+     * @since 1.0.0
+     */
+    private function __construct() {
+        $this->setup_globals();
+        $this->inc();
+        $this->setup_hooks();
+    }
 
-	/**
-	 * Magic method for checking the existence of a plugin global variable.
-	 *
-	 * @since 2.1.6
-	 *
-	 * @param string $key Key to check the set status for.
-	 * @return bool
-	 */
-	public function __isset( $key ) {
-		return isset( $this->data[ $key ] );
-	}
+    /**
+     * Magic method for checking the existence of a plugin global variable.
+     *
+     * @since 2.1.6
+     *
+     * @param string $key Key to check the set status for.
+     * @return bool
+     */
+    public function __isset( $key ) {
+        return isset( $this->data[ $key ] );
+    }
 
-	/**
-	 * Magic method for getting a plugin global variable.
-	 *
-	 * @since 2.1.6
-	 *
-	 * @param string $key Key to return the value for.
-	 * @return mixed
-	 */
-	public function __get( $key ) {
-		$retval = null;
-		if ( isset( $this->data[ $key ] ) ) {
-			$retval = $this->data[ $key ];
-		}
+    /**
+     * Magic method for getting a plugin global variable.
+     *
+     * @since 2.1.6
+     *
+     * @param string $key Key to return the value for.
+     * @return mixed
+     */
+    public function __get( $key ) {
+        $retval = null;
+        if ( isset( $this->data[ $key ] ) ) {
+            $retval = $this->data[ $key ];
+        }
 
-		return $retval;
-	}
+        return $retval;
+    }
 
-	/**
-	 * Magic method for setting a plugin global variable.
-	 *
-	 * @since 2.1.6
-	 *
-	 * @param string $key   Key to set a value for.
-	 * @param mixed  $value Value to set.
-	 */
-	public function __set( $key, $value ) {
-		$this->data[ $key ] = $value;
-	}
+    /**
+     * Magic method for setting a plugin global variable.
+     *
+     * @since 2.1.6
+     *
+     * @param string $key   Key to set a value for.
+     * @param mixed  $value Value to set.
+     */
+    public function __set( $key, $value ) {
+        $this->data[ $key ] = $value;
+    }
 
-	/**
-	 * Magic method for unsetting a plugin global variable.
-	 *
-	 * @since 2.1.6
-	 *
-	 * @param string $key Key to unset a value for.
-	 */
-	public function __unset( $key ) {
-		if ( isset( $this->data[ $key ] ) ) {
-			unset( $this->data[ $key ] );
-		}
-	}
+    /**
+     * Magic method for unsetting a plugin global variable.
+     *
+     * @since 2.1.6
+     *
+     * @param string $key Key to unset a value for.
+     */
+    public function __unset( $key ) {
+        if ( isset( $this->data[ $key ] ) ) {
+            unset( $this->data[ $key ] );
+        }
+    }
 
-	/**
-	 * Return an instance of this class.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return object A single instance of this class.
-	 */
-	public static function start() {
+    /**
+     * Return an instance of this class.
+     *
+     * @since 1.0.0
+     *
+     * @return object A single instance of this class.
+     */
+    public static function start() {
 
-		// If the single instance hasn't been set, set it now.
-		if ( null == self::$instance ) {
-			self::$instance = new self;
-		}
+        // If the single instance hasn't been set, set it now.
+        if ( null == self::$instance ) {
+            self::$instance = new self;
+        }
 
-		return self::$instance;
-	}
+        return self::$instance;
+    }
 
-	/**
-	 * Setups plugin's globals
-	 *
-	 * @since 1.0.0
-	 */
-	private function setup_globals() {
-		// Version
-		$this->version = '2.1.7-alpha';
+    /**
+     * Setups plugin's globals
+     *
+     * @since 1.0.0
+     */
+    private function setup_globals() {
+        // Version
+        $this->version = '2.1.7-alpha';
 
-		// Domain
-		$this->domain = 'wp-statuses';
+        // Domain
+        $this->domain = 'wp-statuses';
 
-		// Base name
-		$this->file      = __FILE__;
-		$this->basename  = plugin_basename( $this->file );
+        // Base name
+        $this->file      = __FILE__;
+        $this->basename  = plugin_basename( $this->file );
 
-		// Path and URL
-		$this->dir     = plugin_dir_path( $this->file );
-		$this->url     = plugin_dir_url ( $this->file );
-		$this->js_url  = trailingslashit( $this->url . 'js' );
-		$this->inc_dir = trailingslashit( $this->dir . 'inc' );
-	}
+        // Path and URL
+        $this->dir     = plugin_dir_path( $this->file );
+        $this->url     = plugin_dir_url ( $this->file );
+        $this->js_url  = trailingslashit( $this->url . 'js' );
+        $this->inc_dir = trailingslashit( $this->dir . 'inc' );
+    }
 
-	/**
-	 * Includes plugin's needed files
-	 *
-	 * @since 1.0.0
-	 */
-	private function inc() {
-		spl_autoload_register( array( $this, 'autoload' ) );
+    /**
+     * Includes plugin's needed files
+     *
+     * @since 1.0.0
+     */
+    private function inc() {
+        spl_autoload_register( array( $this, 'autoload' ) );
 
-		require $this->inc_dir . 'core/functions.php';
+        require $this->inc_dir . 'core/functions.php';
 
-		/**
-		 * Filter here to have a preview about how custom statuses
-		 * are managed by the plugin using:
-		 * add_filter( 'wp_statuses_use_custom_status', '__return_true' );
-		 *
-		 * @since  1.0.0
-		 *
-		 * @param  bool $value True to have a demo of the custom status.
-		 *                     False otherwise.
-		 */
-		if ( apply_filters( 'wp_statuses_use_custom_status', WP_DEBUG ) ) {
-			require $this->inc_dir . 'core/custom.php';
-		}
-	}
+        /**
+         * Filter here to have a preview about how custom statuses
+         * are managed by the plugin using:
+         * add_filter( 'wp_statuses_use_custom_status', '__return_true' );
+         *
+         * @since  1.0.0
+         *
+         * @param  bool $value True to have a demo of the custom status.
+         *                     False otherwise.
+         */
+        if ( apply_filters( 'wp_statuses_use_custom_status', WP_DEBUG ) ) {
+            require $this->inc_dir . 'core/custom.php';
+        }
+    }
 
-	/**
-	 * Setups hooks to register post statuses & load the Administration.
-	 *
-	 * @since 1.0.0
-	 */
-	private function setup_hooks() {
-		add_action( 'init', 'wp_statuses_register_password_protected',   10 );
-		add_action( 'init', 'wp_statuses_register',                    1000 );
+    /**
+     * Setups hooks to register post statuses & load the Administration.
+     *
+     * @since 1.0.0
+     */
+    private function setup_hooks() {
+        add_action( 'init', 'wp_statuses_register_password_protected',   10 );
+        add_action( 'init', 'wp_statuses_register',                    1000 );
 
-		// Boot the Admin
-		if ( is_admin() ) {
-			add_action( 'plugins_loaded', array( 'WP_Statuses_Admin', 'start' ), 10 );
-		}
+        // Boot the Admin
+        if ( is_admin() ) {
+            add_action( 'plugins_loaded', array( 'WP_Statuses_Admin', 'start' ), 10 );
+        }
 
-		// Load translations
-		add_action( 'init', array( $this, 'load_textdomain' ), 9 );
-	}
+        // Load translations
+        add_action( 'init', array( $this, 'load_textdomain' ), 9 );
+    }
 
-	/**
-	 * Loads the translation files
-	 *
-	 * @since 1.0.0
-	 */
-	public function load_textdomain() {
-		load_plugin_textdomain( $this->domain, false, trailingslashit( basename( $this->dir ) ) . 'languages' );
-	}
+    /**
+     * Loads the translation files
+     *
+     * @since 1.0.0
+     */
+    public function load_textdomain() {
+        load_plugin_textdomain( $this->domain, false, trailingslashit( basename( $this->dir ) ) . 'languages' );
+    }
 
-	/**
-	 * Class Autoload function
-	 *
-	 * @since  1.0.0
-	 *
-	 * @param  string $class The class name.
-	 */
-	public function autoload( $class ) {
-		$name = str_replace( '_', '-', strtolower( $class ) );
+    /**
+     * Class Autoload function
+     *
+     * @since  1.0.0
+     *
+     * @param  string $class The class name.
+     */
+    public function autoload( $class ) {
+        $name = str_replace( '_', '-', strtolower( $class ) );
 
-		if ( false === strpos( $name, $this->domain ) ) {
-			return;
-		}
+        if ( false === strpos( $name, $this->domain ) ) {
+            return;
+        }
 
-		$folder = null;
-		$parts = explode( '-', $name );
+        $folder = null;
+        $parts = explode( '-', $name );
 
-		if ( isset( $parts[2] ) ) {
-			$folder = $parts[2];
-		}
+        if ( isset( $parts[2] ) ) {
+            $folder = $parts[2];
+        }
 
-		$path = $this->inc_dir . "{$folder}/classes/class-{$name}.php";
+        $path = $this->inc_dir . "{$folder}/classes/class-{$name}.php";
 
-		// Sanity check.
-		if ( ! file_exists( $path ) ) {
-			return;
-		}
+        // Sanity check.
+        if ( ! file_exists( $path ) ) {
+            return;
+        }
 
-		require $path;
-	}
+        require $path;
+    }
 }
 
 endif;
@@ -238,6 +238,6 @@ endif;
  * @since 1.0.0
  */
 function wp_statuses() {
-	return WP_Statuses::start();
+    return WP_Statuses::start();
 }
 add_action( 'plugins_loaded', 'wp_statuses', 5 );

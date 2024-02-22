@@ -52,24 +52,24 @@ For example, to add an `archive` custom status to Posts, you can use the WordPre
 
 ```php
 register_post_status( 'archive', array(
-		/* WordPress built in arguments. */
-		'label'                       => __( 'Archive', 'wp-statuses' ),
-		'label_count'                 => _n_noop( 'Archived <span class="count">(%s)</span>', 'Archived <span class="count">(%s)</span>', 'wp-statuses' ),
-		'public'                      => false,
-		'show_in_admin_all_list'      => false,
-		'show_in_admin_status_list'   => true,
+        /* WordPress built in arguments. */
+        'label'                       => __( 'Archive', 'wp-statuses' ),
+        'label_count'                 => _n_noop( 'Archived <span class="count">(%s)</span>', 'Archived <span class="count">(%s)</span>', 'wp-statuses' ),
+        'public'                      => false,
+        'show_in_admin_all_list'      => false,
+        'show_in_admin_status_list'   => true,
 
-		/* WP Statuses specific arguments. */
-		'post_type'                   => array( 'post' ), // Only for posts!
-		'show_in_metabox_dropdown'    => true,
-		'show_in_inline_dropdown'     => true,
-		'show_in_press_this_dropdown' => true,
-		'labels'                      => array(
-			'metabox_dropdown' => __( 'Archived',        'wp-statuses' ),
-			'inline_dropdown'  => __( 'Archived',        'wp-statuses' ),
-		),
-		'dashicon'                    => 'dashicons-archive',
-	) );
+        /* WP Statuses specific arguments. */
+        'post_type'                   => array( 'post' ), // Only for posts!
+        'show_in_metabox_dropdown'    => true,
+        'show_in_inline_dropdown'     => true,
+        'show_in_press_this_dropdown' => true,
+        'labels'                      => array(
+            'metabox_dropdown' => __( 'Archived',        'wp-statuses' ),
+            'inline_dropdown'  => __( 'Archived',        'wp-statuses' ),
+        ),
+        'dashicon'                    => 'dashicons-archive',
+    ) );
 ```
 
 ## Configuration needed
