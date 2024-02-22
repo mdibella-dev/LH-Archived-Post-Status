@@ -1,4 +1,5 @@
 === LH Archived Post Status ===
+
 Contributors:      shawfactor
 Donate link:        https://lhero.org/portfolio/lh-archived-post-status/
 Tags:              admin, posts, pages, status, workflow
