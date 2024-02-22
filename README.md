@@ -6,7 +6,7 @@ Allows posts and pages to be archived so you can remove content from the main lo
 ## Development Info
 
 ### Contributors
-shawfactor
+shawfactor (original contributor), [Marco Di Bella ](https://github.com/mdibella-dev) (this fork)
 
 ### Tags
 admin, posts, pages, status, workflow
@@ -25,25 +25,21 @@ admin, posts, pages, status, workflow
 
 This plugin allows you to archive your WordPress content similar to the way you archive your e-mail. Unlike other archiving solutions though this actually does it all and does it properly
 
-* Makes a new post status available in the drop down called Archived
-* Hides or removes your content without having to trash the content
-* Content can either be hidden entirely from public view  or simply from the main loop and feed and pages, with other solutions you can only hide it from public view.
-* Allows you to add a label to the title of those posts/pages etc that are archived
-* Allows you to add a message to the top of the post/page etc that the content is no longer up too date
-* Allows you to set an archiving date after which content is automatically changed to having an archived status
-* Compatible with posts, pages and custom post types
+- Makes a new post status available in the drop down called Archived
+- Hides or removes your content without having to trash the content
+- Content can either be hidden entirely from public view  or simply from the main loop and feed and pages, with other solutions you can only hide it from public view.
+- Allows you to add a label to the title of those posts/pages etc that are archived
+- Allows you to add a message to the top of the post/page etc that the content is no longer up too date
+- Allows you to set an archiving date after which content is automatically changed to having an archived status
+- Compatible with posts, pages and custom post types
 
 This plugin is ideal for sites where certain kinds of content is not meant to be evergreen
-
-**Like this plugin? Please consider [leaving a 5-star review](https://wordpress.org/support/view/plugin-reviews/lh-archived-post-status/).**
-
-**Love this plugin or want to help the LocalHero Project? Please consider [making a donation](https://lhero.org/portfolio/lh-archived-post-status/).**
 
 <br>
 
 ## Frequently Asked Questions
 
-= Isn't this the same as using the Draft or Private statuses? =
+* Isn't this the same as using the Draft or Private statuses? *
 
 Actually, no, they are not the same thing.
 
@@ -53,11 +49,11 @@ The Private status is a special kind of published status. It means the content i
 
 The Archived post status, on the other hand, is meant to be a "post-published" status. Once a post has been set to Archived the content is either hidden entirely from non logged in viewers or removed from the front page and feed (but still available on singular pages). This behaviour is controlled in the settings screen.
 
-= Doesn't this do the same thing as the other archiving plugin in the repository? =
+* Doesn't this do the same thing as the other archiving plugin in the repository? *
 
 Actually it does more! Unlike the other plugin content archived with this plugin can still be available to non logged in visitors (depends on plugin settings) and just  removed from the front page and xml feeds (with a custom message can also be added to flag to visitors that the content is no longer up too date). Alternately it can be hidden entirely (to non logged in viewers).
 
-= Can't I just trash old content I don't want anymore? =
+*Can't I just trash old content I don't want anymore? *
 
 Yes, there is nothing wrong with trashing old content. However it will be hidden from non logged in viewers.
 
@@ -65,7 +61,7 @@ However, WordPress automatically purges trashed posts every 7 days (by default),
 
 This is what makes the Archived post status handy. You can unpublish content without having to delete it forever.
 
-= How can I view a listing of my archived content on its own archive pagelisting all archived posts, pages etc?
+*How can I view a listing of my archived content on its own archive pagelisting all archived posts, pages etc?*
 
 This not not part of my plugin per se but it is easily done.
 
@@ -75,11 +71,11 @@ and input the shortcode with the post_status of archive:, eg [display-posts post
 
 If you want to customise the display that shortcode has plenty of arguments. There are also other shortcodes tha can do this (just search the repository).
 
-= My archived posts have disappeared when I deactivate the plugin, why is this?
+*My archived posts have disappeared when I deactivate the plugin, why is this?*
 
-The reason is that wordpress no longer recognises them, but they are still in the database. If you no longer need the plugin, just reactivate it, switch all the archived posts/pages/cpts to a native post status and THEN deactivate the plugin.
+The reason is that WordPress no longer recognises them, but they are still in the database. If you no longer need the plugin, just reactivate it, switch all the archived posts/pages/cpts to a native post status and THEN deactivate the plugin.
 
-= What if something does not work?  =
+*What if something does not work?*
 
 LH Archived Post Status, and all [https://lhero.org](LocalHero) plugins are made to WordPress standards. Therefore they should work with all well coded plugins and themes. However not all plugins and themes are well coded (and this includes many popular ones).
 
@@ -87,17 +83,13 @@ If something does not work properly, firstly deactivate ALL other plugins and sw
 
 If the problem persists please leave a post in the support forum: [https://wordpress.org/support/plugin/lh-archived-post-status/](https://wordpress.org/support/plugin/lh-archived-post-status/). I look there regularly and resolve most queries.
 
-= What if I need a feature that is not in the plugin?  =
+*What if I need a feature that is not in the plugin?*
 
 Please contact me for custom work and enhancements here: [https://shawfactor.com/contact/](https://shawfactor.com/contact/)
 
-= What if this plugin does not work with XXX plugin?  =
+* Is there a template function to including archiving functionality appropriately on the front end?*
 
-The issue is likely is likely with the other plugin, all my lugins follw standards but may do not. Feel free to add a support issue and if I identify a bug I will fix it. But if its not a bug and you need my plugin to be compatible with another then contact outside teh forum for an enahncement.
-
-= Is there a template function to including archiving functionality appropriately on the front end?  =
-
-Yes the plugin defines the function archive_post_link which acts almost identically to the wordpress native function edit_post_link. That is clicking it will archive the relevant post is the current user has the edit_post capability. You can add it to you theme.
+Yes the plugin defines the function archive_post_link which acts almost identically to the WordPress native function edit_post_link. That is clicking it will archive the relevant post is the current user has the edit_post capability. You can add it to you theme.
 
 <br>
 
