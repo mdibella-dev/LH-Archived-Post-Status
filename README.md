@@ -71,7 +71,7 @@ This is what makes the Archived post status handy. You can unpublish content wit
 
 This not not part of my plugin per se but it is easily done.
 
-The easiest way would be to install a plugin that allows you to query by post_status eg: https://wordpress.org/plugins/display-posts-shortcode/ and input the shortcode with the post_status of archive:, e.g. `[display-posts post_status=”archive”]`
+The easiest way would be to install a plugin that allows you to query by post_status e.g.: https://wordpress.org/plugins/display-posts-shortcode/ and input the shortcode with the post_status of archive:, e.g. `[display-posts post_status=”archive”]`
 
 If you want to customise the display that shortcode has plenty of arguments. There are also other shortcodes tha can do this (just search the repository).
 
@@ -85,11 +85,11 @@ The reason is that WordPress no longer recognises them, but they are still in th
 
 **What if something does not work?**
 
-LH Archived Post Status, and all [https://lhero.org](LocalHero) plugins are made to WordPress standards. Therefore they should work with all well coded plugins and themes. However not all plugins and themes are well coded (and this includes many popular ones).
+LH Archived Post Status, and all [LocalHero](https://lhero.org) plugins are made to WordPress standards. Therefore they should work with all well coded plugins and themes. However not all plugins and themes are well coded (and this includes many popular ones).
 
 If something does not work properly, firstly deactivate ALL other plugins and switch to one of the themes that come with core, e.g. twentyfifeen, twentysixteen etc.
 
-If the problem persists please leave a post in the support forum: [https://wordpress.org/support/plugin/lh-archived-post-status/](https://wordpress.org/support/plugin/lh-archived-post-status/). I look there regularly and resolve most queries.
+If the problem persists please leave a post in the [support forum](https://wordpress.org/support/plugin/lh-archived-post-status/). I look there regularly and resolve most queries.
 
 <br>
 
