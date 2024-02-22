@@ -49,9 +49,13 @@ The Private status is a special kind of published status. It means the content i
 
 The Archived post status, on the other hand, is meant to be a "post-published" status. Once a post has been set to Archived the content is either hidden entirely from non logged in viewers or removed from the front page and feed (but still available on singular pages). This behaviour is controlled in the settings screen.
 
+<br>
+
 **Doesn't this do the same thing as the other archiving plugin in the repository?**
 
 Actually it does more! Unlike the other plugin content archived with this plugin can still be available to non logged in visitors (depends on plugin settings) and just  removed from the front page and xml feeds (with a custom message can also be added to flag to visitors that the content is no longer up too date). Alternately it can be hidden entirely (to non logged in viewers).
+
+<br>
 
 **Can't I just trash old content I don't want anymore?**
 
@@ -61,19 +65,23 @@ However, WordPress automatically purges trashed posts every 7 days (by default),
 
 This is what makes the Archived post status handy. You can unpublish content without having to delete it forever.
 
+<br>
+
 **How can I view a listing of my archived content on its own archive pagelisting all archived posts, pages etc?**
 
 This not not part of my plugin per se but it is easily done.
 
-The easiest way would be to install a plugin that allows you to query by post_status eg: https://wordpress.org/plugins/display-posts-shortcode/
-
-and input the shortcode with the post_status of archive:, eg [display-posts post_status=”archive”]
+The easiest way would be to install a plugin that allows you to query by post_status eg: https://wordpress.org/plugins/display-posts-shortcode/ and input the shortcode with the post_status of archive:, e.g. `[display-posts post_status=”archive”]`
 
 If you want to customise the display that shortcode has plenty of arguments. There are also other shortcodes tha can do this (just search the repository).
+
+<br>
 
 **My archived posts have disappeared when I deactivate the plugin, why is this?**
 
 The reason is that WordPress no longer recognises them, but they are still in the database. If you no longer need the plugin, just reactivate it, switch all the archived posts/pages/cpts to a native post status and THEN deactivate the plugin.
+
+<br>
 
 **What if something does not work?**
 
@@ -83,9 +91,13 @@ If something does not work properly, firstly deactivate ALL other plugins and sw
 
 If the problem persists please leave a post in the support forum: [https://wordpress.org/support/plugin/lh-archived-post-status/](https://wordpress.org/support/plugin/lh-archived-post-status/). I look there regularly and resolve most queries.
 
+<br>
+
 **What if I need a feature that is not in the plugin?**
 
 Please contact me for custom work and enhancements here: [https://shawfactor.com/contact/](https://shawfactor.com/contact/)
+
+<br>
 
 **Is there a template function to including archiving functionality appropriately on the front end?**
 
