@@ -376,7 +376,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
         }
 
 
-        public function add_meta_boxes( $post_type, $post )  {
+        public function add_meta_boxes( $post_type, $post ) {
 
             if ( self::is_applicable_post_type( $post_type ) ) {
 
