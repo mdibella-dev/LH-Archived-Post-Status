@@ -270,7 +270,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         static function make_status_consistent_with_expiration( $post_object, $expiration ) {
 
-            //check to see if is currently archived but expiration is in the future, if so publish it
+            // Check to see if is currently archived but expiration is in the future, if so publish it
             if( ( strtotime( $expiration ) > strtotime( 'today midnight' ) ) and ( $post_object->post_status == self::return_new_status_name() ) ) {
 
                 $my_post = [
@@ -282,7 +282,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
                 wp_update_post( $my_post );
 
 
-            //check to see if is currently published but expiration is in the past, if so archive it
+            // Check to see if is currently published but expiration is in the past, if so archive it
             } elseif ( ( strtotime( $expiration ) < strtotime( 'today midnight' ) ) and ( $post_object->post_status == 'publish' ) ) {
 
                 $my_post = [
@@ -570,7 +570,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
                     $this,
                     'reading_setting_callback'
                 ], // Callback
-                'reading' // What Page?  This makes the section show up on the General Settings Page
+                'reading' // What page? This makes the section show up on the General Settings Page
             );
 
             register_setting( 'reading', self::return_opt_name(), [
@@ -784,7 +784,6 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
             }
 
         }
-
 
 
         public function display_archive_state( $states , $post) {
@@ -1072,7 +1071,6 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             }
 
-
             if ( $new_status == 'archive' ) {
 
                 $dir = str_replace( get_option( 'home' ), '', $url );
@@ -1088,11 +1086,11 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         public function plugin_init(){
 
-            //load the translations, both plugin specific and the wp-statuses library
+            // Load the translations, both plugin specific and the wp-statuses library
             load_plugin_textdomain( self::return_plugin_namespace(), false, basename( dirname( __FILE__ ) ) . '/languages' );
             load_plugin_textdomain( 'wp-statuses', false, basename( dirname( __FILE__ ) ) . '/includes/wp-statuses/languages' );
 
-            //Handle access and display of the archived post status
+            // Handle access and display of the archived post status
             add_action( 'pre_get_posts', [
                 $this,
                 'exclude_archive_post_status_from_main_query'
@@ -1103,31 +1101,31 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
                 'exclude_archive_post_status_from_feed'
             ] );
 
-            //add a section to the reading settings
+            // Add a section to the reading settings
             add_action( 'admin_init', [
                 $this,
                 'add_configuration_section'
             ] );
 
-            //add an expiry to newly archived post objects that don't have one already, remove it if it has been republished
+            // Add an expiry to newly archived post objects that don't have one already, remove it if it has been republished
             add_action( 'transition_post_status', [
                 $this,
                 'maybe_add_or_remove_expiry'
             ], 10, 3);
 
-            //add the expiry metabox
+            // Add the expiry metabox
             add_action( 'add_meta_boxes', [
                 $this,
                 'add_meta_boxes'
             ], 10, 2 );
 
-            //handle posted values from the metabox
+            // Handle posted values from the metabox
             add_action( 'save_post', [
                 $this,
                 'update_post_details'
             ], 10, 3 );
 
-            //add messages and labels to titles and post content
+            // Add messages and labels to titles and post content
             add_filter( 'the_title', [
                 $this,
                 'modify_title'
@@ -1138,7 +1136,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
                 'after_body_open'
             ] );
 
-            //add a column for the archive date
+            // Add a column for the archive date
             add_filter( 'page_row_actions', [
                 $this,
                 'add_posts_rows'
@@ -1149,25 +1147,25 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
                 'add_posts_rows'
             ], 10, 2 );
 
-            //create a admin ajax endpoint for archiving posts
+            // Create a admin ajax endpoint for archiving posts
             add_action( 'wp_ajax_' . self::return_plugin_namespace() . '-do_archive', [
                 $this,
                 'ajax_do_archive'
             ] );
 
-            //Add a label to the listing table
+            // Add a label to the listing table
             add_filter( 'display_post_states', [
                 $this,
                 'display_archive_state'
             ], 10, 2 );
 
-            //Maybe add the post_status to the sitemap
+            // Maybe add the post_status to the sitemap
             add_filter( 'wp_sitemaps_posts_query_args', [
                 $this,
                 'maybe_add_status_to_sitemap'
             ], 10, 2 );
 
-            //add tasks to the cron job
+            // Add tasks to the cron job
             add_action( 'lh_archived_post_status_run', [
                 $this,
                 'run_processes'
@@ -1178,12 +1176,12 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
                 'initial_processes'
             ] );
 
-
-            //exclude certain post types, some of them do their own thing with metaboxes
+            // Exclude certain post types, some of them do their own thing with metaboxes
             add_filter( 'wp_statuses_get_supported_post_types', [
                 $this,
                 'exclude_certain_post_types'
             ], 10, 1 );
+
 
             /**
             * The following hooks are just to ensure the plugin plays nice with some other plugins in the LocalHero project.
@@ -1191,32 +1189,33 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
             * They can safely be ignored for the vast majority
             */
 
-            //add archive post status to the wp super cache helper
+            // Add archive post status to the wp super cache helper
             add_filter( 'lh_super_cache_helper_statuses', [
                 $this,
                 'lh_super_cache_helper_statuses'
             ], 10, 1 );
 
-            //filter out the archive to draft if copying post
+            // Filter out the archive to draft if copying post
             add_filter( 'lh_copy_to_draft_meta_defaults_filter', [
                 $this,
                 'remove_meta_archive_date'
             ], 10, 2 );
 
-            //maybe make archived posts, pages, cpts etc, waybackable
+            // Maybe make archived posts, pages, cpts etc, waybackable
             add_filter( 'lh_wayback_machine_get_applicable_post_statuses', [
                 $this,
                 'maybe_make_waybackable'
             ], 10, 1 );
 
-            //maybe check for broken links for archived posts, pages, cpts etc
+            // Maybe check for broken links for archived posts, pages, cpts etc
             add_filter( 'lh_blc_get_applicable_post_statuses', [
                 $this,
                 'maybe_make_checkable'
             ], 10, 1 );
 
-            //define some global functions
+            // Define some global functions
             $this->define_global_functions();
+
 
             /**
             * The following hook is just to ensure the plugin plays nice with WP Super Cache.
@@ -1224,7 +1223,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
             * It can safely be ignored for the vast majority
             */
 
-            //prune the cahce when a post is transitionsed from published to archived
+            // Prune the cachce when a post is transitionsed from published to archived
             add_action( 'transition_post_status', [
                 $this,
                 'prune_on_transition'
@@ -1306,13 +1305,13 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         public function __construct() {
 
-            //create the archived custom post status
+            // Create the archived custom post status
             add_action( 'init', [
                 $this,
                 'create_custom_post_status'
             ], 1000 );
 
-            //try to run everything on plugins loaded
+            // Try to run everything on plugins loaded
             add_action( 'plugins_loaded', [
                 $this,
                 'plugin_init'
