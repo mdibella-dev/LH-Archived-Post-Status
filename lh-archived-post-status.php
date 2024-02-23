@@ -390,7 +390,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             if ( self::is_applicable_post_type( $post_type ) ) {
 
-                add_meta_box( self::return_plugin_namespace() . '-archive_date-div', __( 'Archive Date', 'lh-archive-post-status' ), [$this, 'render_archive_date_box_content'], $post_type, 'side', 'high', [] );
+                add_meta_box( self::return_plugin_namespace() . '-archive_date-div', __( 'Automatic archiving', 'lh-archive-post-status' ), [$this, 'render_archive_date_box_content'], $post_type, 'side', 'high', [] );
 
             }
 
