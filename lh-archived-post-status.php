@@ -399,15 +399,15 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
         public function render_archive_date_box_content( $post, $callback_args ) {
 
-            wp_nonce_field( self::return_plugin_namespace() . '-post_edit-nonce', self::return_plugin_namespace() . '-post_edit-nonce' ) . '\n';
+            wp_nonce_field( self::return_plugin_namespace() . '-post_edit-nonce', self::return_plugin_namespace() . '-post_edit-nonce' );
             $raw_date = get_post_meta( $post->ID, '_' . self::return_plugin_namespace() . '-post_expires', true );
             $archive_date = strtotime( $raw_date);
 
 
-            echo '<table class="form-table">' . '\n';
-            echo '<tr valign="top">' . '\n';
-            echo '<th scope="row"><label for="' . self::return_plugin_namespace() . '-post_expires">' . __( 'Archive Date', self::return_plugin_namespace() ) . '</label></th>' . '\n';
-            echo '<td>' . '\n';
+            echo '<table class="form-table">';
+            echo '<tr valign="top">';
+            echo '<th scope="row"><label for="' . self::return_plugin_namespace() . '-post_expires">' . __( 'Archive Date', self::return_plugin_namespace() ) . '</label></th>';
+            echo '<td>';
             echo '<input type="date" name="' . self::return_plugin_namespace() . '-post_expires" id="' . self::return_plugin_namespace() . '-post_expires" value="';
 
             if ( ! empty( $raw_date ) ) {
@@ -416,10 +416,10 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
 
             }
 
-            echo '" />' . '\n';
-            echo '</td>' . '\n';
-            echo '</tr>' . '\n';
-            echo '</table>' . '\n';
+            echo '" />';
+            echo '</td>';
+            echo '</tr>';
+            echo '</table>';
 
         }
 
