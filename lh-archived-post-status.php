@@ -990,6 +990,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
                     $this,
                     'admin_edit_columns'
                 ], 5, 1 );
+
                 add_action( 'manage_' . $posttype . '_posts_custom_column', [
                     $this,
                     'admin_edit_column_values'
@@ -1098,6 +1099,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
             load_plugin_textdomain( 'lh-archive-post-status', false, plugin_basename( PLUGIN_DIR ) . '/languages' );
             load_plugin_textdomain( 'wp-statuses', false, plugin_basename( PLUGIN_DIR ) . '/includes/wp-statuses/languages' );
 
+
             // Handle access and display of the archived post status
             add_action( 'pre_get_posts', [
                 $this,
@@ -1109,11 +1111,13 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
                 'exclude_archive_post_status_from_feed'
             ] );
 
+
             // Add a section to the reading settings
             add_action( 'admin_init', [
                 $this,
                 'add_configuration_section'
             ] );
+
 
             // Add an expiry to newly archived post objects that don't have one already, remove it if it has been republished
             add_action( 'transition_post_status', [
@@ -1121,17 +1125,20 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
                 'maybe_add_or_remove_expiry'
             ], 10, 3);
 
+
             // Add the expiry metabox
             add_action( 'add_meta_boxes', [
                 $this,
                 'add_meta_boxes'
             ], 10, 2 );
 
+
             // Handle posted values from the metabox
             add_action( 'save_post', [
                 $this,
                 'update_post_details'
             ], 10, 3 );
+
 
             // Add messages and labels to titles and post content
             add_filter( 'the_title', [
@@ -1144,6 +1151,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
                 'after_body_open'
             ] );
 
+
             // Add a column for the archive date
             add_filter( 'page_row_actions', [
                 $this,
@@ -1155,11 +1163,13 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
                 'add_posts_rows'
             ], 10, 2 );
 
+
             // Create a admin ajax endpoint for archiving posts
             add_action( 'wp_ajax_' . self::return_plugin_namespace() . '-do_archive', [
                 $this,
                 'ajax_do_archive'
             ] );
+
 
             // Add a label to the listing table
             add_filter( 'display_post_states', [
@@ -1167,11 +1177,13 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
                 'display_archive_state'
             ], 10, 2 );
 
+
             // Maybe add the post_status to the sitemap
             add_filter( 'wp_sitemaps_posts_query_args', [
                 $this,
                 'maybe_add_status_to_sitemap'
             ], 10, 2 );
+
 
             // Add tasks to the cron job
             add_action( 'lh_archived_post_status_run', [
@@ -1183,6 +1195,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
                 $this,
                 'initial_processes'
             ] );
+
 
             // Exclude certain post types, some of them do their own thing with metaboxes
             add_filter( 'wp_statuses_get_supported_post_types', [
