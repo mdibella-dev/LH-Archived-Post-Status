@@ -1,7 +1,5 @@
 # Changelog
 
-_New / Improve / Bugfix_
-
 <br>
 
 ## Changelog of this fork
@@ -93,13 +91,13 @@ Released: 08-10-2017
 - Bug Fix
 
 
-## 2.17
+### 2.17
 Released: 04-10-2017
 
 - Various improvements
 
 
-## 2.16
+### 2.16
 Released: 25-07-2017
 
 - Don't use on attachments
