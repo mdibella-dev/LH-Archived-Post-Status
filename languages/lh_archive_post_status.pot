@@ -1,0 +1,442 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: LH Archived Post Status\n"
+"POT-Creation-Date: 2024-02-23 09:47+0100\n"
+"PO-Revision-Date: 2024-02-23 09:47+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: Poedit 3.4.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: lh-archived-post-status.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:170
+msgid "&mdash; No Change &mdash;"
+msgstr ""
+
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:239
+msgid "Publishing"
+msgstr ""
+
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:300
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:383
+msgid "Preview Changes"
+msgstr ""
+
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:301
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:383
+msgid "Preview"
+msgstr ""
+
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:357
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:688
+#: includes/wp-statuses/inc/core/custom.php:32
+msgid "Save"
+msgstr ""
+
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:365
+#: includes/wp-statuses/js/script.js:25
+msgid "Save Draft"
+msgstr ""
+
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:369
+#: includes/wp-statuses/js/script.js:24
+msgid "Save as Pending"
+msgstr ""
+
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:469
+msgid "Set status"
+msgstr ""
+
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:520
+msgid "Stick this post to the front page"
+msgstr ""
+
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:527
+msgid "Password:"
+msgstr ""
+
+#. translators: Publish box date format, see https://secure.php.net/date
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:564
+msgid "M j, Y @ H:i"
+msgstr ""
+
+#. translators: 1: the scheduled date for the post.
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:569
+#: includes/wp-statuses/inc/core/classes/class-wp-statuses-core-status.php:190
+#, php-format
+msgid "Schedule for: <b>%1$s</b>"
+msgstr ""
+
+#. translators: 1: the post’s saved date.
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:571
+#, php-format
+msgid "Saved on: <b>%1$s</b>"
+msgstr ""
+
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:572
+msgid "Save <b>now</b>"
+msgstr ""
+
+#. translators: 1: the date to save the post on.
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:574
+#, php-format
+msgid "Save on: <b>%1$s</b>"
+msgstr ""
+
+#. translators: Post revisions heading. 1: The number of available revisions
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:616
+#, php-format
+msgid "Revisions: %s"
+msgstr ""
+
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:619
+msgctxt "revisions"
+msgid "Browse"
+msgstr ""
+
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:620
+msgid "Browse revisions"
+msgstr ""
+
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:631
+msgid "Edit"
+msgstr ""
+
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:632
+msgid "Edit date and time"
+msgstr ""
+
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:636
+msgid "Date and time"
+msgstr ""
+
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:697
+msgid "Submit for Review"
+msgstr ""
+
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:702
+#: includes/wp-statuses/inc/core/classes/class-wp-statuses-core-status.php:180
+#: includes/wp-statuses/js/script.js:20
+msgid "Publish"
+msgstr ""
+
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:705
+msgid "Schedule"
+msgstr ""
+
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:716
+msgid "Delete Permanently"
+msgstr ""
+
+#: includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php:716
+msgid "Move to Trash"
+msgstr ""
+
+#: includes/wp-statuses/inc/core/classes/class-wp-statuses-core-status.php:181
+#: includes/wp-statuses/js/script.js:22
+msgid "Update"
+msgstr ""
+
+#: includes/wp-statuses/inc/core/classes/class-wp-statuses-core-status.php:182
+#: includes/wp-statuses/js/script.js:19
+msgid "Publish on:"
+msgstr ""
+
+#. translators: 1: the date on which the post is to be published
+#: includes/wp-statuses/inc/core/classes/class-wp-statuses-core-status.php:184
+#, php-format
+msgid "Publish on: <b>%1$s</b>"
+msgstr ""
+
+#: includes/wp-statuses/inc/core/classes/class-wp-statuses-core-status.php:185
+#: includes/wp-statuses/js/script.js:21
+msgid "Published on:"
+msgstr ""
+
+#. translators: 1: the date on which the post was published
+#: includes/wp-statuses/inc/core/classes/class-wp-statuses-core-status.php:187
+#, php-format
+msgid "Published on: <b>%1$s</b>"
+msgstr ""
+
+#: includes/wp-statuses/inc/core/classes/class-wp-statuses-core-status.php:188
+msgid "Publish <b>immediately</b>"
+msgstr ""
+
+#: includes/wp-statuses/inc/core/classes/class-wp-statuses-core-status.php:214
+msgid "Publicly published"
+msgstr ""
+
+#: includes/wp-statuses/inc/core/classes/class-wp-statuses-core-status.php:215
+msgid "Published"
+msgstr ""
+
+#: includes/wp-statuses/inc/core/classes/class-wp-statuses-core-status.php:221
+msgid "Privately Published"
+msgstr ""
+
+#: includes/wp-statuses/inc/core/classes/class-wp-statuses-core-status.php:222
+msgid "Save as Private"
+msgstr ""
+
+#: includes/wp-statuses/inc/core/classes/class-wp-statuses-core-status.php:223
+msgid "Save as Private on:"
+msgstr ""
+
+#. translators: Post date information. 1: Date on which the post is to be saved privately
+#: includes/wp-statuses/inc/core/classes/class-wp-statuses-core-status.php:225
+#, php-format
+msgid "Save as Private on: <b>%1$s</b>"
+msgstr ""
+
+#: includes/wp-statuses/inc/core/classes/class-wp-statuses-core-status.php:226
+msgid "Saved as Private on:"
+msgstr ""
+
+#. translators: Post date information. 1: Date on which the post was saved privately
+#: includes/wp-statuses/inc/core/classes/class-wp-statuses-core-status.php:228
+#, php-format
+msgid "Saved as Private on: <b>%1$s</b>"
+msgstr ""
+
+#: includes/wp-statuses/inc/core/classes/class-wp-statuses-core-status.php:229
+msgid "Save as private <b>now</b>"
+msgstr ""
+
+#: includes/wp-statuses/inc/core/classes/class-wp-statuses-core-status.php:230
+msgid "Private"
+msgstr ""
+
+#: includes/wp-statuses/inc/core/classes/class-wp-statuses-core-status.php:236
+msgid "Pending Review"
+msgstr ""
+
+#: includes/wp-statuses/inc/core/classes/class-wp-statuses-core-status.php:242
+msgid "Draft"
+msgstr ""
+
+#: includes/wp-statuses/inc/core/custom.php:22
+msgctxt "post status"
+msgid "Restricted to members"
+msgstr ""
+
+#. translators: %s is the number of restricted to members pages.
+#: includes/wp-statuses/inc/core/custom.php:25
+#, php-format
+msgid "Restricted to members <span class=\"count\">(%s)</span>"
+msgid_plural "Restricted to members <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/wp-statuses/inc/core/custom.php:33
+msgid "Restricted"
+msgstr ""
+
+#. translators: %s is the login link.
+#: includes/wp-statuses/inc/core/custom.php:59
+#, php-format
+msgid "Please %s to view this content."
+msgstr ""
+
+#: includes/wp-statuses/inc/core/custom.php:62
+msgid "log in"
+msgstr ""
+
+#: includes/wp-statuses/inc/core/custom.php:74
+#: includes/wp-statuses/inc/core/custom.php:86 lh-archived-post-status.php:670
+#: lh-archived-post-status.php:961
+msgid "Archive"
+msgstr ""
+
+#. translators: %s is the number of archived posts.
+#: includes/wp-statuses/inc/core/custom.php:76
+#, php-format
+msgid "Archived <span class=\"count\">(%s)</span>"
+msgid_plural "Archived <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/wp-statuses/inc/core/custom.php:85
+#: includes/wp-statuses/inc/core/custom.php:94 lh-archived-post-status.php:97
+#: lh-archived-post-status.php:960 lh-archived-post-status.php:969
+msgid "Archived"
+msgstr ""
+
+#: includes/wp-statuses/inc/core/custom.php:87 lh-archived-post-status.php:962
+msgid "Archive on:"
+msgstr ""
+
+#. translators: Post date information. 1: Date on which the post is to be archived
+#: includes/wp-statuses/inc/core/custom.php:89 lh-archived-post-status.php:964
+#, php-format
+msgid "Archive on: <b>%1$s</b>"
+msgstr ""
+
+#: includes/wp-statuses/inc/core/custom.php:90 lh-archived-post-status.php:965
+msgid "Archived on:"
+msgstr ""
+
+#. translators: Post date information. 1: Date on which the post was archived
+#: includes/wp-statuses/inc/core/custom.php:92 lh-archived-post-status.php:967
+#, php-format
+msgid "Archived on: <b>%1$s</b>"
+msgstr ""
+
+#: includes/wp-statuses/inc/core/custom.php:93 lh-archived-post-status.php:968
+msgid "Archive <b>now</b>"
+msgstr ""
+
+#: includes/wp-statuses/inc/core/custom.php:95 lh-archived-post-status.php:970
+msgid "Add to archives"
+msgstr ""
+
+#: includes/wp-statuses/inc/core/functions.php:163
+msgctxt "post status"
+msgid "Password Protected"
+msgstr ""
+
+#. translators: %s is the number of password protected posts.
+#: includes/wp-statuses/inc/core/functions.php:166
+#, php-format
+msgid "Password Protected <span class=\"count\">(%s)</span>"
+msgid_plural "Password Protected <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/wp-statuses/inc/core/functions.php:173
+msgid "Password Protected"
+msgstr ""
+
+#: includes/wp-statuses/inc/core/functions.php:174
+msgid "Password"
+msgstr ""
+
+#: includes/wp-statuses/inc/core/functions.php:237
+msgid "You need to preserve keys to customize the order."
+msgstr ""
+
+#: includes/wp-statuses/inc/core/functions.php:361
+msgid "You need to hook to the wp_statuses_registered action to unregister a status for one or more post type."
+msgstr ""
+
+#: includes/wp-statuses/inc/core/functions.php:485
+msgid "The list of post types the status applies to."
+msgstr ""
+
+#: includes/wp-statuses/inc/core/functions.php:495
+msgid "The label to use into the Block editor."
+msgstr ""
+
+#: includes/wp-statuses/inc/core/functions.php:563
+msgid "Auto Draft"
+msgstr ""
+
+#: includes/wp-statuses/js/script.js:17
+msgid "Schedule for:"
+msgstr ""
+
+#: includes/wp-statuses/js/script.js:18
+msgctxt "post action/button label"
+msgid "Schedule"
+msgstr ""
+
+#: includes/wp-statuses/js/script.js:23
+#, javascript-format
+msgid "%1$s %2$s, %3$s at %4$s:%5$s"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+#: lh-archived-post-status.php:41
+msgid "LH Archived Post Status"
+msgstr ""
+
+#: lh-archived-post-status.php:90
+msgid "archived"
+msgstr ""
+
+#: lh-archived-post-status.php:352 lh-archived-post-status.php:383
+#: lh-archived-post-status.php:399
+msgid "Archive Date"
+msgstr ""
+
+#: lh-archived-post-status.php:367
+msgid "Never"
+msgstr ""
+
+#: lh-archived-post-status.php:458 partials/option-settings.php:11
+msgid "Yes - But not in the, main loop, frontpage, or feed"
+msgstr ""
+
+#: lh-archived-post-status.php:459 partials/option-settings.php:12
+msgid "No - only logged in users can view archived posts"
+msgstr ""
+
+#: lh-archived-post-status.php:479 partials/option-settings.php:23
+msgid "This label will appear after the title for archived posts on the front end of your website"
+msgstr ""
+
+#: lh-archived-post-status.php:526 partials/option-settings.php:7
+msgid "Can Archived Posts be read publicly:"
+msgstr ""
+
+#: lh-archived-post-status.php:540 partials/option-settings.php:18
+msgid "Title Label:"
+msgstr ""
+
+#: lh-archived-post-status.php:554 partials/option-settings.php:28
+msgid "Archive Message:"
+msgstr ""
+
+#: lh-archived-post-status.php:568
+msgid "Archiving Settings"
+msgstr ""
+
+#: lh-archived-post-status.php:670
+msgid "Archive this post"
+msgstr ""
+
+#: lh-archived-post-status.php:698
+msgid "invalid post id"
+msgstr ""
+
+#: lh-archived-post-status.php:706
+msgid "Current user does not have capability"
+msgstr ""
+
+#: lh-archived-post-status.php:714
+msgid "Incorrect Nonce"
+msgstr ""
+
+#: lh-archived-post-status.php:820
+msgid "This content has been archived. It may no longer be relevant"
+msgstr ""
+
+#: lh-archived-post-status.php:1023
+msgid "Archive This"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/mdibella-dev/lh-archived-post-status"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Creates an archived post status. Content can be excluded from the main loop and feed (but visible with a message), or hidden entirely"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Peter Shaw"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://shawfactor.com/"
+msgstr ""
