@@ -1,8 +1,4 @@
-# Changelog
-
-<br>
-
-## Changelog of this fork
+# Changelog of this fork
 
 ### 3.x (in development)
 
@@ -17,7 +13,7 @@
 
 <br>
 
-## Changelog of the orginal plugin
+# Changelog of the orginal plugin
 
 ### 3.10
 Released: 10-10-2023
