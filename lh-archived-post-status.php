@@ -1085,7 +1085,7 @@ if ( ! class_exists( 'LH_archived_post_status_plugin' ) ) {
         public function plugin_init() {
 
             // Load the translations, both plugin specific and the wp-statuses library
-            load_plugin_textdomain( self::return_plugin_namespace(), false, basename( dirname( __FILE__ ) ) . '/languages' );
+            load_plugin_textdomain( 'lh_archive_post_status', false, basename( dirname( __FILE__ ) ) . '/languages' );
             load_plugin_textdomain( 'wp-statuses', false, basename( dirname( __FILE__ ) ) . '/includes/wp-statuses/languages' );
 
             // Handle access and display of the archived post status
