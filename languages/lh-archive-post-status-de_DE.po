@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LH Archived Post Status\n"
 "POT-Creation-Date: 2024-02-23 12:02+0100\n"
-"PO-Revision-Date: 2024-02-23 12:05+0100\n"
+"PO-Revision-Date: 2024-02-26 10:46+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -60,7 +60,7 @@ msgid ""
 "This label will appear after the title for archived posts on the front end "
 "of your website"
 msgstr ""
-"Dieses Label wird im Frontend Ihrer Website bei archivierten Beiträge nach "
+"Dieses Label wird im Frontend deiner Website bei archivierten Beiträge nach "
 "dem Titel angezeigt"
 
 #: lh-archived-post-status.php:536 partials/option-settings.php:7
@@ -85,7 +85,7 @@ msgstr "Diesen Beitrag archivieren"
 
 #: lh-archived-post-status.php:680 lh-archived-post-status.php:971
 msgid "Archive"
-msgstr "Archiv"
+msgstr "Archivieren"
 
 #: lh-archived-post-status.php:708
 msgid "invalid post id"
