@@ -10,6 +10,7 @@
 - Code cleanup: Standardize the inline comments
 - Code cleanup: Standardize the spelling of logical operators
 - Code cleanup: Fix whitespaces, line spacing and indentation
+- Bump to the latest wp-statuses library
 
 <br>
 
