@@ -8,8 +8,8 @@
             </th>
             <td>
                 <select name="<?php echo self::return_publicly_available(); ?>" id="<?php echo self::return_publicly_available(); ?>">
-                    <option value="1" <?php  if ( 1 == $options[self::return_publicly_available()] ){ echo 'selected="selected"'; }  ?>><?php echo __( 'Yes - But not in the, main loop, frontpage, or feed', 'lh-archive-post-status' ); ?></option>
-                    <option value="0" <?php  if ( 0 == $options[self::return_publicly_available()] ){ echo 'selected="selected"';}  ?>><?php echo __( 'No - only logged in users can view archived posts', 'lh-archive-post-status' ); ?></option>
+                    <option value="1" <?php if ( 1 == $options[self::return_publicly_available()] ){ echo 'selected="selected"'; }  ?>><?php echo __( 'Yes - But not in the, main loop, frontpage, or feed', 'lh-archive-post-status' ); ?></option>
+                    <option value="0" <?php if ( 0 == $options[self::return_publicly_available()] ){ echo 'selected="selected"';}  ?>><?php echo __( 'No - only logged in users can view archived posts', 'lh-archive-post-status' ); ?></option>
                 </select>
             </td>
         </tr>
