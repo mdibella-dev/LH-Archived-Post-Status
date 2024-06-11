@@ -1,4 +1,4 @@
-<h1><?php echo esc_html(get_admin_page_title()); ?></h1>
+<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 <form name="form1" method="post" action="">
     <?php wp_nonce_field( self::return_plugin_namespace() . '-nonce', self::return_plugin_namespace() . '-nonce', false ); ?>
     <table class="form-table">
